@@ -2,7 +2,21 @@ const webpack = require('webpack');
 const config = require("./webpack/webpack.config");
 const path = require("path");
 const host = "localhost";
-const port = '6000';
+const port = 9000;
+
+
+
+/**
+ * 接口请求被代理的入口地址
+ * @type {string}
+ */
+const proxyTarget = `http://localhost:8088/h5/`;
+
+/**
+ * 代理服务器地址的web contenx
+ * @type {RegExp}
+ */
+const proxyServerWebContext = 'h5';
 
 config.plugins.push(
     new webpack.DefinePlugin({
@@ -25,18 +39,15 @@ config.devServer = {
     publicPath: '/',
     proxy: {
         '/api': {
-            target: `http://localhost:8086/udf`,
+            target:proxyTarget,
             pathRewrite: {'^/api': '/'},
             changeOrigin: true,
             secure: false,
-            // cookieDomainRewrite: {
-            //     "*": "/"
-            // },
             //重写cookie
             onProxyRes: function (proxyRes, req, res) {
                 // console.log("重写cookie");
                 let cookies = proxyRes.headers['set-cookie'];
-                let cookieRegex = /Path=\/udf\//i;
+                let cookieRegex = new RegExp(`Path=\\/${proxyServerWebContext}\\/`, "i");
                 //修改cookie Path
                 if (cookies) {
                     let newCookie = cookies.map(function (cookie) {
@@ -56,23 +67,7 @@ config.devServer = {
 
     //如果你的应用使用HTML5 history API，
     //你可能需要使用index.html响应404或者问题请求，只需要设置g historyApiFallback: true即可
-    historyApiFallback: true,
-    // before(app) {
-    //     app.use(function (req, res, next) {
-    //         let url = req.url.trim();
-    //         console.log(`发起请求->${url}`);
-    //         if (url.split(".")[1].trim() === 0 && url.indexOf("/api/") < 0) {
-    //             req.url = public;
-    //             console.log(`重定向到首页->${req.url}`);
-    //         }
-    //         next();
-    //     });
-    // },
-    // after(app) {
-    //     console.log("执行after");
-    //     app.use(function (req, res, next) {
-    //     });
-    // }
+    historyApiFallback: true
 
 };
 
