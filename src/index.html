@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telphone=no, email=no">
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <!--&lt;!&ndash; 高清方案脚本 &ndash;&gt;-->
+    <!--<script src="https://os.alipayobjects.com/rmsportal/lvEQQbNgHsIxVfXLkmuX.js"></script>-->
+    <script>
+        if (!window.Promise) {
+            document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
+        }
+    </script>
+    <link href="./style.css" rel="stylesheet"/>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        div#root{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="root" class="d_flex flex_column"></div>
+<!--<script src="https://as.alipayobjects.com/g/component/??react/15.3.2/react.min.js,react/15.3.2/react-dom.min.js"></script>-->
+<script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+<script src="<%= htmlWebpackPlugin.files.chunks.react.entry%>"></script>
+<script src="<%= htmlWebpackPlugin.files.chunks.main.entry%>"></script>
+<script>
+    if ('addEventListener' in document) {
+        window.addEventListener('load', function () {
+            FastClick.attach(document.body);
+        }, false);
+    }
+</script>
+</body>
+</html>
