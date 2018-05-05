@@ -4,7 +4,9 @@
   "description": "react antd mobile typescript",
   "main": "Appt.tsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve-dev": "cross-env dev=0 webpack-dev-server --config webpack.dev.js  --devtool eval --progress --colors  --watch --port 6000 --open",
+    "build": "rm -rf ./dist && cross-env dev=0 webpack --config ./webpack/webpack.config.js  --progress --colors",
+    "build:prod": "rm -rf ./dist && cross-env dev=1 webpack --config ./webpack/webpack.prod.config.js   --progress --colors"
   },
   "author": "wuxp",
   "license": "ISC",

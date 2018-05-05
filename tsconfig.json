@@ -10,24 +10,24 @@
     "allowJs": true,
     "jsx": "react",
     "jsxFactory": "React.createElement",
-    "types": [
-      "node",
-      "react",
-      "react-dom",
-      "react-router",
-      "react-router-dom",
-      "react-loadable",
-      "lodash"
-    ],
+//    "types": [
+//      "node",
+//      "react",
+//      "react-dom",
+//      "react-router",
+//      "react-router-dom",
+//      "react-loadable",
+//      "lodash"
+//    ],
     "lib": [
       "dom",
       "es5",
       "es2015",
       "es2015.promise"
+    ],
+    "typeRoots": [
+      "types"
     ]
-    //    "typeRoots": [
-    //      "types"
-    //    ]
   },
   "compileOnSave": false,
   "include": [

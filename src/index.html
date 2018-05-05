@@ -19,9 +19,7 @@
     <meta name="x5-page-mode" content="app">
     <meta name="msapplication-tap-highlight" content="no">
     <meta content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <!--&lt;!&ndash; 高清方案脚本 &ndash;&gt;-->
-    <!--<script src="https://os.alipayobjects.com/rmsportal/lvEQQbNgHsIxVfXLkmuX.js"></script>-->
+    <title>antd mobile</title>
     <script>
         if (!window.Promise) {
             document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
@@ -29,20 +27,20 @@
     </script>
     <link href="./style.css" rel="stylesheet"/>
     <style>
-        html,body{
+        html, body {
             height: 100%;
         }
-        div#root{
+
+        div#root {
             height: 100%;
         }
     </style>
 </head>
 <body>
 <div id="root" class="d_flex flex_column"></div>
-<!--<script src="https://as.alipayobjects.com/g/component/??react/15.3.2/react.min.js,react/15.3.2/react-dom.min.js"></script>-->
 <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
-<script src="<%= htmlWebpackPlugin.files.chunks.react.entry%>"></script>
-<script src="<%= htmlWebpackPlugin.files.chunks.main.entry%>"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 <script>
     if ('addEventListener' in document) {
         window.addEventListener('load', function () {
