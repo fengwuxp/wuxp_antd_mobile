@@ -10,7 +10,7 @@ export interface AntdMobileStore {
 
 /**
  * 管理 store
- * @type {StoreBuilder<AntdAdminStore>}
+ * @type {StoreBuilder<AntdMobileStore>}
  */
 const builder = reduxStoreBuilderFactory<AntdMobileStore>({});
 

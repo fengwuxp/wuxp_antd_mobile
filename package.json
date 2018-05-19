@@ -1,6 +1,9 @@
 {
   "name": "wxp_antd_mobile",
   "version": "0.0.1",
+  "publishConfig": {
+    "registry": "http://nexus.oaknt.com:18081/repository/oak_npm_hosted/"
+  },
   "description": "react antd mobile typescript",
   "main": "Appt.tsx",
   "scripts": {
