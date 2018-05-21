@@ -1,6 +1,6 @@
 import {Store} from 'redux'
 import {reduxStoreBuilderFactory} from "wuxp_react_dynamic_router/src/factory/store/StoreFactory";
-import {createRootSaga} from "wuxp_react_dynamic_router/src/manager/saga/SagaManager";
+import {createRootSaga} from "wuxp_react_dynamic_router/src/redux/SagaManager";
 
 
 export interface AntdMobileStore {

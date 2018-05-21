@@ -2,7 +2,7 @@ import ApiAbstractFilter from "typescript_api_sdk/src/api/filter/ApiAbstractFilt
 import {ApiResp} from "typescript_api_sdk/src/api/model/ApiResp";
 import {isNullOrUndefined} from "util";
 import {message as AntdMessage} from "antd";
-import {analysisAction} from "../action/ActionStrategy";
+// import {analysisAction} from "../action/ActionStrategy";
 
 let count = 0;
 
@@ -34,7 +34,7 @@ export class UnifiedRespHandleFilter extends ApiAbstractFilter {
                 if (isNullOrUndefined(actions) || actions.length === 0) {
                     return;
                 }
-                analysisAction(actions[0]);
+                // analysisAction(actions[0]);
             });
         } else {
             if (count === 0) {

@@ -1,7 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
-yarn.lock
 node_modules
-dist/
-yarn-error.log
-
+dist

@@ -19,6 +19,8 @@ if (pkg.theme && typeof(pkg.theme) === 'string') {
     theme = pkg.theme;
 }
 
+
+
 /**
  * 抓取要打包成原生js的tsx文件
  * @param root
@@ -78,6 +80,7 @@ const config = {
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
                     use: 'css-loader'
                 })
             },
