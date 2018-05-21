@@ -1,7 +1,7 @@
 import {FetchOption} from "typescript_api_sdk/src/api/option/FetchOption";
 import {ApiResp} from "typescript_api_sdk/src/api/model/ApiResp";
 import ApiAbstractFilter from "typescript_api_sdk/src/api/filter/ApiAbstractFilter";
-import {Toast} from "antd-mobile/es/index";
+import {Toast} from "antd-mobile/lib/index";
 
 
 /**

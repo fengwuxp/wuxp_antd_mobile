@@ -19,6 +19,29 @@ if (pkg.theme && typeof(pkg.theme) === 'string') {
     theme = pkg.theme;
 }
 
+// const {INCLUDE_PATH, EXCLUDE_PATH} = {
+//     INCLUDE_PATH: [],
+//     EXCLUDE_PATH: [
+//         "antd-mobile/lib/modal/PropsType.d.ts",
+//         "antd-mobile/es/modal/PropsType.d.ts"
+//     ]
+// };
+//
+//
+// const isExclude = function (path) {
+//
+//     let exclude = EXCLUDE_PATH.some((item) => {
+//         return path.indexOf(item) >= 0;
+//     });
+//
+//     if (exclude) {
+//         console.log("---------exclude--------",path, exclude);
+//     }else {
+//         console.log("---------include--------",path, exclude);
+//     }
+//
+//     return exclude;
+// };
 
 
 /**

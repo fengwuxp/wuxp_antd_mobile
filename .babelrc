@@ -5,7 +5,6 @@
   ],
   "plugins": [
     [
-
       "transform-runtime",
       {
         "helpers": false,
@@ -14,12 +13,10 @@
         "moduleName": "babel-runtime"
       },
       "import",
-      [
-        {
-          "libraryName": "antd-mobile",
-          "libraryDirectory": "lib"
-        }
-      ]
+      {
+        "libraryName": "antd-mobile",
+        "libraryDirectory": "lib"
+      }
     ]
   ]
 }
