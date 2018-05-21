@@ -33,7 +33,7 @@ const defaultOptions = {
     }
 } as FetchOption;
 
-//http强求处理错误处理者
+//http请求处理错误处理者
 const httpErrorHandler: FetchHttpErrorHandler = new FetchHttpErrorHandler();
 
 httpErrorHandler.setDefaultErrorHandler(httpCodeDefaultHandler);

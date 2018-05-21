@@ -2,14 +2,15 @@ import ApiAbstractFilter from "typescript_api_sdk/src/api/filter/ApiAbstractFilt
 import {ApiResp} from "typescript_api_sdk/src/api/model/ApiResp";
 import {isNullOrUndefined} from "util";
 import {message as AntdMessage} from "antd";
-// import {analysisAction} from "../action/ActionStrategy";
+import {FetchOption} from "typescript_api_sdk/src/api/option/FetchOption";
+
 
 let count = 0;
 
 /**
  * 统一响应处理过滤器
  */
-export class UnifiedRespHandleFilter extends ApiAbstractFilter {
+export class UnifiedRespHandleFilter extends ApiAbstractFilter<FetchOption,ApiResp<any>> {
 
 
     // preHandle(params: FetchOption): boolean | Promise<boolean> {

@@ -27,6 +27,7 @@
     "@types/react-router-dom": "^4.2.5",
     "@types/react-router-redux": "^5.0.13",
     "@types/redux-thunk": "^2.1.0",
+    "@types/weixin": "0.0.1",
     "antd-mobile": "^2.1.8",
     "awesome-typescript-loader": "^3.2.2",
     "babel-core": "^6.26.0",
