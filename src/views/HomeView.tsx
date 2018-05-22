@@ -1,16 +1,8 @@
 import * as  React from "react";
 import AbstractSimpleView from "wuxp_react_dynamic_router/src/layout/view/AbstractSimpleView";
-import {UIBuilder} from "wuxp_react_dynamic_router/src/ui/UIBuilder";
+import {Button} from "antd-mobile";
 
-let buildView = (uibuiler: UIBuilder, isAdd: boolean = true) => {
-    if (isAdd) {
-        uibuiler.appendMaskComponent(
-            <div>我是弹出层</div>
-        )
-    } else {
-        uibuiler.removeMaskComponent();
-    }
-};
+
 
 /**
  *
@@ -22,12 +14,8 @@ export default class HomeView extends AbstractSimpleView<any, any> {
 
     componentDidMount(): void {
 
-        setTimeout(() => {
-            buildView(this);
-        }, 1000);
-        setTimeout(() => {
-            buildView(this, false);
-        }, 2000)
+
+
     }
 
 
@@ -37,7 +25,9 @@ export default class HomeView extends AbstractSimpleView<any, any> {
     };
 
     renderFooter = () => {
-        return <footer key={'footer'}>123</footer>
+        return <footer key={'footer'}>
+            <Button type={"primary"}>123</Button>
+        </footer>
     };
 
     renderHeader = () => {

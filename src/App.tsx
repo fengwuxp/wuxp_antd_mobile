@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as ReactDOM from 'react-dom';
-import 'antd-mobile/dist/antd-mobile.min.css'
 import {Route, Switch} from 'react-router-dom'
 import BrowserNavigatorFactory from "wuxp_react_dynamic_router/src/factory/navigator/web/BrowserNavigatorFactory"
 import {Provider} from "react-redux";

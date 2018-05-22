@@ -1,10 +1,8 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const config = require("./webpack/webpack.config");
+const config = require("./webpack.config.js");
 const path = require("path");
 const host = "localhost";
 const port = 9000;
-
 
 
 /**
@@ -18,8 +16,7 @@ const proxyTarget = `http://localhost:8088/h5/`;
  * @type {RegExp}
  */
 const proxyServerWebContext = 'h5';
-
-config.plugins.push(
+config.plugins.unshift(
     new webpack.DefinePlugin({
         'process.env': {
             NODE_ENV: JSON.stringify("dev"),
@@ -27,7 +24,6 @@ config.plugins.push(
             BASE_NAME: JSON.stringify("/")
         }
     }),
-    new ExtractTextPlugin('styles.css'),
 );
 const public = `${host}:${port}`;
 
@@ -41,7 +37,7 @@ config.devServer = {
     publicPath: '/',
     proxy: {
         '/api': {
-            target:proxyTarget,
+            target: proxyTarget,
             pathRewrite: {'^/api': '/'},
             changeOrigin: true,
             secure: false,
