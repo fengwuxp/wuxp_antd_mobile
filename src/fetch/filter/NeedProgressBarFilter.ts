@@ -31,7 +31,7 @@ export class NeedProgressBarFilter extends ApiAbstractFilter<FetchOption, ApiRes
     }
 
 
-    postHandle(data: ApiResp, options: FetchOption): boolean {
+    postHandle(data: ApiResp<any>, options: FetchOption): boolean {
         if (options.useProgressBar) {
             //计数器减一
             PROGRESSBAR_COUNT--;

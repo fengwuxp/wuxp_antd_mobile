@@ -24,6 +24,7 @@ ReactDOM.render(
                 <Route path="/logout" component={UserLayout}/>
                 <AuthorizedRoute
                     path="/"
+                    isLogin={false}
                     render={(props: any) => <BaseLayout {...props} />}
                     redirectPath="/login"
                 />
