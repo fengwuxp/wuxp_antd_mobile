@@ -7,9 +7,9 @@
   "description": "react antd mobile typescript",
   "main": "Appt.tsx",
   "scripts": {
-    "serve-dev": "cross-env dev=0 webpack-dev-server --config ./webpack.local.dev.js  --devtool eval --progress --colors  --watch --port 10203 --open",
-    "build": "rm -rf ./dist && cross-env dev=0 webpack --config ./webpack.config.js  --progress --colors",
-    "build:prod": "rm -rf ./dist && cross-env dev=1 webpack --config ./webpack.prod.config.js   --progress --colors",
+    "serve-dev": "cross-env _self=1 webpack-dev-server --config ./webpack.local.dev.js  --devtool eval --progress --colors  --watch --port 10203 --open",
+    "build": "rm -rf ./dist && cross-env _self=1 webpack --config ./webpack.config.js  --progress --colors",
+    "build:prod": "rm -rf ./dist && cross-env _self=1 webpack --config ./webpack.prod.config.js   --progress --colors",
     "npm_publish": "npm publish"
   },
   "author": "wuxp",
@@ -29,7 +29,7 @@
     "@types/react-router-redux": "^5.0.13",
     "@types/redux-thunk": "^2.1.0",
     "@types/weixin": "0.0.1",
-    "antd-mobile": "^2.1.8",
+    "antd-mobile": "^2.1.9",
     "awesome-typescript-loader": "^3.2.2",
     "babel-core": "^6.26.0",
     "babel-istanbul": "^0.11.0",
