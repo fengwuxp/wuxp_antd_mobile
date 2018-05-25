@@ -1,7 +1,8 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const {existsSync} = require('fs');
+const {scssModuleLoader,cssModuleLoader} = require('./cssModuleUtils');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const getLessLoader = require("./getLessLoader");
 
 function getWebpackConfig() {
     if (process.env._self !== "1") {
@@ -15,34 +16,6 @@ const {
     PROJECT_DIR
 } = getWebpackConfig();
 
-/**
- * 获取主题配置
- * @param path    文件路径
- * @param isPackage  是否配置在package.json文件中
- */
-function getTheme(path, isPackage) {
-
-
-    let theme = {};
-    if (isPackage) {
-        //配置在package.json文件中
-        const pkg = existsSync(path) ? require(path) : {};
-        if (pkg.theme && typeof(pkg.theme) === 'string') {
-            let cfgPath = pkg.theme;
-            // relative path
-            if (cfgPath.charAt(0) === '.') {
-                cfgPath = resolve(args.cwd, cfgPath);
-            }
-            theme = require(cfgPath);
-        } else if (pkg.theme && typeof(pkg.theme) === 'object') {
-            theme = pkg.theme;
-        }
-    } else {
-        //使用单独的js 文件
-        theme = require(path);
-    }
-    return theme;
-}
 
 /**
  * 获取 打包配置
@@ -56,8 +29,7 @@ function getTheme(path, isPackage) {
 const getWebpackBaseConfig = function (options) {
 
     console.log("---------初始化打包配置--------", options);
-    const isPackage = options.packagePath !== undefined && options.packagePath !== null;
-    const theme = getTheme(isPackage ? options.packagePath : options.themePath, isPackage);
+
 
     //默认打包目录
     const packPath = path.resolve("src", '../dist');
@@ -73,8 +45,9 @@ const getWebpackBaseConfig = function (options) {
             publicPath: "/"
         },
         resolve: {
-            extensions: [".ts", ".tsx", "d.ts", ".js", ".css", ".scss", ".less", ".png", "jpg", ".jpeg", ".gif"]
+            extensions: [".ts", ".tsx", "d.ts", ".js", ".css", ".scss", ".less", ".png", "jpg", ".jpeg", ".gif"],
         },
+
         module: {
             rules: [
                 {
@@ -84,7 +57,8 @@ const getWebpackBaseConfig = function (options) {
                         {
                             loader: "babel-loader",
                             options: {
-                                presets: ['es2015', 'stage-2']
+                                presets: ['es2015', 'stage-2'],
+                                compact: true
                             }
                         }
                     ]
@@ -108,14 +82,7 @@ const getWebpackBaseConfig = function (options) {
                     use: ExtractTextPlugin.extract({
                         fallback: "style-loader",
                         use: [
-                            {
-                                loader: "css-loader",
-                                options: {
-                                    //压缩css
-                                    minimize: true,
-                                    localIdentName: "[name]__[local]-[hash:base64:5]"
-                                }
-                            },
+                            cssModuleLoader,
                             {
                                 loader: "postcss-loader",
                                 options: {
@@ -127,66 +94,24 @@ const getWebpackBaseConfig = function (options) {
                         ]
                     })
                 },
-                {
-                    test: /\.less$/,
-                    use: ExtractTextPlugin.extract({
-                        fallback: "style-loader",
-                        use: [
-                            {
-                                loader: "css-loader",
-                                options: {
-                                    //压缩css
-                                    minimize: true,
-                                    localIdentName: "[name]__[local]-[hash:base64:5]"
-                                }
-                            },
-                            {
-                                loader: "postcss-loader",
-                                options: {
-                                    config: {
-                                        path: path.join(__dirname, './postcss.config.js')
-                                    }
-                                }
-                            },
-                            {
-                                loader: 'less-loader',
-                                options: {
-                                    // antd使用的是less3.X+,webpack添加如下配置：
-                                    javascriptEnabled: true,
-                                    sourceMap: true,
-                                    modifyVars: theme
-                                }
-                            }
-                        ]
-                    }),
-                    include: /node_modules/,
-                },
+
+                getLessLoader(options),
+
                 {
                     test: /\.s[c|a]ss$/,
-                    use: ExtractTextPlugin.extract({
-                        use: [
-                            {
-                                loader: "css-loader",
-                                options: {
-
-                                    //压缩css
-                                    minimize: true,
-                                    localIdentName: "[name]__[local]-[hash:base64:5]"
+                    use: [
+                        require.resolve("style-loader"),
+                        scssModuleLoader,
+                        {
+                            loader: "postcss-loader",
+                            options: {
+                                config: {
+                                    path: path.join(__dirname, './postcss.config.js')
                                 }
-                            },
-                            {
-                                loader: "postcss-loader",
-                                options: {
-                                    config: {
-                                        path: path.join(__dirname, './postcss.config.js')
-                                    }
-                                }
-                            },
-                            {loader: "sass-loader"}
-                        ],
-                        fallback: "style-loader"
-                    })
-
+                            }
+                        },
+                        {loader: "sass-loader"}
+                    ]
                 },
                 {
                     test: /\.(png|jpg|svg)/,
