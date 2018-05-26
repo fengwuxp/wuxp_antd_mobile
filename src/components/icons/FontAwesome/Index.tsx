@@ -1,6 +1,6 @@
 import FontAwesome from 'react-native-vector-icons/glyphmaps/FontAwesome.json';
-import "./FontAwesomeIcon.less";
-import createIconSet from "../create-icon-set";
+import "./style.less";
+import createIconSet from "../CreateIconSet";
 
 const Icon = createIconSet(FontAwesome, 'FontAwesome');
 

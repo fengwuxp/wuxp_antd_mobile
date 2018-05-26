@@ -1,6 +1,6 @@
 import MaterialIcons from 'react-native-vector-icons/glyphmaps/MaterialIcons.json';
-import "./MaterialCommunityIcons.less";
-import createIconSet from "../create-icon-set";
+import "./style.less";
+import createIconSet from "../CreateIconSet";
 
 const Icon = createIconSet(MaterialIcons, 'MaterialIcons');
 

@@ -1,6 +1,6 @@
 import EvilIcons from 'react-native-vector-icons/glyphmaps/EvilIcons.json';
-import "./EvilIconsIcon.less";
-import createIconSet from "../create-icon-set";
+import "./style.less";
+import createIconSet from "../CreateIconSet";
 
 const Icon = createIconSet(EvilIcons, 'EvilIcons');
 

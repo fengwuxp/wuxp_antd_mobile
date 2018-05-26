@@ -1,6 +1,6 @@
 import SimpleLineIcons from 'react-native-vector-icons/glyphmaps/SimpleLineIcons.json';
-import "./SimpleLineIcons.less";
-import createIconSet from "../create-icon-set";
+import "./style.less";
+import createIconSet from "../CreateIconSet";
 
 const Icon = createIconSet(SimpleLineIcons, 'SimpleLineIcons');
 

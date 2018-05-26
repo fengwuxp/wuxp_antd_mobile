@@ -1,6 +1,6 @@
 import Ionicons from 'react-native-vector-icons/glyphmaps/Ionicons.json';
-import "./Ionicons.less";
-import createIconSet from "../create-icon-set";
+import "./style.less";
+import createIconSet from "../CreateIconSet";
 
 const Icon = createIconSet(Ionicons, 'Ionicons');
 

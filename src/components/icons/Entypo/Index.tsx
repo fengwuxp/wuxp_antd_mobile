@@ -1,6 +1,6 @@
 import Entypo from 'react-native-vector-icons/glyphmaps/Entypo.json';
-import "./EntypoIcon.less";
-import createIconSet from "../create-icon-set";
+import "./style.less";
+import createIconSet from "../CreateIconSet";
 
 const Icon = createIconSet(Entypo, 'Entypo');
 

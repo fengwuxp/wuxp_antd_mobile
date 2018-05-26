@@ -1,6 +1,6 @@
 import Foundation from 'react-native-vector-icons/glyphmaps/Foundation.json';
-import "./FoundationIcon.less";
-import createIconSet from "../create-icon-set";
+import "./style.less";
+import createIconSet from "../CreateIconSet";
 
 const Icon = createIconSet(Foundation, 'Foundation');
 

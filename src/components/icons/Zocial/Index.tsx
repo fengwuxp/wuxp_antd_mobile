@@ -1,6 +1,6 @@
 import Zocial from 'react-native-vector-icons/glyphmaps/Zocial.json';
-import "./ZocialIcon.less";
-import createIconSet from "../create-icon-set";
+import "./style.less";
+import createIconSet from "../CreateIconSet";
 
 const Icon = createIconSet(Zocial, 'Zocial');
 
