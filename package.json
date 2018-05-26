@@ -1,5 +1,5 @@
 {
-  "name": "wxp_antd_mobile",
+  "name": "wuxp_antd_mobile",
   "version": "0.0.1",
   "publishConfig": {
     "registry": "http://nexus.oaknt.com:18081/repository/oak_npm_hosted/"
@@ -27,6 +27,7 @@
     "@types/react-router-config": "^1.0.6",
     "@types/react-router-dom": "^4.2.5",
     "@types/react-router-redux": "^5.0.13",
+    "@types/react-swipeable-views": "^0.12.1",
     "@types/redux-thunk": "^2.1.0",
     "@types/weixin": "0.0.1",
     "antd-mobile": "^2.1.9",
@@ -99,11 +100,14 @@
     "react-loadable": "^5.3.1",
     "react-lz-editor": "^0.12.1",
     "react-modal": "^3.4.4",
+    "react-native-vector-icons": "^4.6.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
+    "react-swipeable-views": "^0.12.13",
+    "react-swipeable-views-utils": "^0.12.13",
     "react-tooltip": "^3.5.0",
     "redux": "^4.0.0",
     "redux-actions": "^2.3.0",

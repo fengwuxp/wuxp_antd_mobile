@@ -3,6 +3,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const {scssModuleLoader,cssModuleLoader} = require('./cssModuleUtils');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const getLessLoader = require("./getLessLoader");
+const {isExclude} = require('./WebpackUtils.js');
 
 function getWebpackConfig() {
     if (process.env._self !== "1") {
@@ -65,7 +66,7 @@ const getWebpackBaseConfig = function (options) {
                 },
                 {
                     test: /\.ts[x]?$/,
-                    // exclude: isExclude,
+                    exclude: isExclude,
                     use: [
                         {
                             loader: "babel-loader",
@@ -123,7 +124,12 @@ const getWebpackBaseConfig = function (options) {
                             }
                         }
                     ]
-                }
+                },
+                {
+                    test: /\.ttf$/,
+                    loader: "url-loader", // or directly file-loader
+                    include: path.resolve(__dirname, "node_modules/react-native-vector-icons"),
+                },
             ]
         },
         // When importing a module whose path matches one of the following, just
