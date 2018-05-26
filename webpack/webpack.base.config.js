@@ -1,6 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const {scssModuleLoader,cssModuleLoader} = require('./cssModuleUtils');
+const {scssModuleLoader, cssModuleLoader} = require('./cssModuleUtils');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const getLessLoader = require("./getLessLoader");
 const {isExclude} = require('./WebpackUtils.js');
@@ -52,8 +52,9 @@ const getWebpackBaseConfig = function (options) {
         module: {
             rules: [
                 {
-                    test: /\.js$/,
-                    exclude: /(node_modules|bower_components)/,
+                    test: /\.js[x]?$/,
+                    // exclude: /(node_modules|bower_components)/,
+                    exclude: isExclude,
                     use: [
                         {
                             loader: "babel-loader",
@@ -126,10 +127,15 @@ const getWebpackBaseConfig = function (options) {
                     ]
                 },
                 {
-                    test: /\.ttf$/,
-                    loader: "url-loader", // or directly file-loader
-                    include: path.resolve(__dirname, "node_modules/react-native-vector-icons"),
-                },
+                    test: /\.(woff|woff2|svg|ttf|eot)$/,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            //项目设置打包到dist下的fonts文件夹下
+                            options: {name: 'fonts/[name].[hash:8].[ext]'}
+                        }
+                    ]
+                }
             ]
         },
         // When importing a module whose path matches one of the following, just

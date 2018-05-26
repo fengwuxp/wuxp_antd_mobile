@@ -4,7 +4,8 @@ const {INCLUDE_PATH} = require("../../../webpack-config/WebpackConfig");
 const DEFAULT_INCLUDE = [
     "typescript_api_sdk",
     "wuxp_antd_mobile",
-    "wuxp_antd_mamager"
+    "wuxp_antd_mamager",
+    "wuxp_react_dynamic_router"
 ];
 
 const list = [...(INCLUDE_PATH || []), ...DEFAULT_INCLUDE];
