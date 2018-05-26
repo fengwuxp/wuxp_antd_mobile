@@ -1,6 +1,7 @@
 import * as webpack from "webpack";
 import * as path from "path";
 import config from "./webpack.config";
+
 const host = "localhost";
 const port = 10203;
 
@@ -12,10 +13,11 @@ const port = 10203;
 const proxyTarget = `http://localhost:8088/h5/`;
 
 /**
- * 代理服务器地址的web contenx
+ * 代理服务器地址的web context
  * @type {RegExp}
  */
 const proxyServerWebContext = 'h5';
+
 config.plugins.unshift(
     new webpack.DefinePlugin({
         'process.env': {
@@ -25,14 +27,13 @@ config.plugins.unshift(
         }
     }),
 );
-const public = `${host}:${port}`;
+// const public = `${host}:${port}`;
 
 config.devServer = {
     contentBase: path.join(__dirname, ''),
     compress: true,
     host: host,
     port,    //设置端口号
-    public,
 
     publicPath: '/',
     proxy: {
@@ -69,4 +70,4 @@ config.devServer = {
 
 };
 
-module.exports = config;
+export default config;
