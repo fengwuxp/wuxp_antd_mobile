@@ -1,6 +1,6 @@
-const webpack = require('webpack');
-const config = require("./webpack.config.js");
-const path = require("path");
+import * as webpack from "webpack";
+import * as path from "path";
+import config from "./webpack.config";
 const host = "localhost";
 const port = 10203;
 

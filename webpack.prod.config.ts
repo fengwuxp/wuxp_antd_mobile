@@ -1,6 +1,6 @@
-const baseConfig = require("./webpack/webpack.prod.config.template");
-const webpack = require('webpack');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+import baseConfig from "./webpack/webpack.prod.config.template"
+import * as webpack from "webpack";
+import * as HtmlWebPackPlugin from "html-webpack-plugin";
 
 
 const config = {

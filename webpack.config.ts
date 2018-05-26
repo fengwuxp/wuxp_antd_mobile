@@ -1,5 +1,5 @@
-const baseConfig = require("./webpack/webpack.config.template");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+import baseConfig from "./webpack/webpack.config.template"
+import * as HtmlWebPackPlugin from "html-webpack-plugin";
 
 
 const config = {
@@ -16,4 +16,5 @@ config.plugins.push(
     })
 );
 
-module.exports = config;
+
+export default config;

@@ -1,9 +1,12 @@
 const autoprefixer = require('autoprefixer');
 
-module.exports = {
-    ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+module.export= {
+    // https://webpack.js.org/guides/migrating/#complex-options
+    ident: 'postcss',
     plugins: () => [
         require('postcss-flexbugs-fixes'),
+        require('precss'),
+        require('postcss-cssnext'),
         autoprefixer({
             browsers: [
                 '>1%',
