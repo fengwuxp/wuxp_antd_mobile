@@ -4,3 +4,7 @@ node_modules
 dist/
 package-lock.json
 tsconfig-for-webpack-config.json
+webpack.config.ts
+webpack.local.dev.ts
+webpack.prod.config.ts
+tsconfig.json
