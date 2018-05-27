@@ -1,6 +1,5 @@
-import baseConfig from "./webpack/webpack.config.template";
+import * as baseConfig from "./webpack/webpack.config.template";
 import * as HtmlWebPackPlugin from "html-webpack-plugin";
-
 
 const config = {
     ...baseConfig,

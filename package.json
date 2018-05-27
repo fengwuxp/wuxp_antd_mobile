@@ -7,7 +7,6 @@
   "description": "react antd mobile typescript",
   "main": "Appt.tsx",
   "scripts": {
-    "build-t": "cross-env TS_NODE_PROJECT='./tsconfig-for-webpack-config.json' && ts-node ./script/build.ts",
     "serve-dev": "cross-env TS_NODE_PROJECT='./tsconfig-for-webpack-config.json' _self=1 webpack-dev-server --config ./webpack.local.dev.ts  --devtool eval --progress --colors  --watch --port 10203 --open",
     "build": "rm -rf ./dist &&  cross-env TS_NODE_PROJECT='./tsconfig-for-webpack-config.json' _self=1 webpack --config ./webpack.config.ts  --progress --colors",
     "build:prod": "rm -rf ./dist &&  cross-env TS_NODE_PROJECT='./tsconfig-for-webpack-config.json' _self=1 webpack --config ./webpack.prod.config.ts   --progress --colors",
