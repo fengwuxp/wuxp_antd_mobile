@@ -1,4 +1,4 @@
-import baseConfig from "./webpack/webpack.config.template"
+import baseConfig from "./webpack/webpack.config.template";
 import * as HtmlWebPackPlugin from "html-webpack-plugin";
 
 
@@ -8,7 +8,7 @@ const config = {
 
 config.plugins.push(
     new HtmlWebPackPlugin({
-        template: './src/index.ejs',
+        template: './src/index.html',
         filename: "index.html",
         title: "antd mobile template",
         chunks: ['app'],

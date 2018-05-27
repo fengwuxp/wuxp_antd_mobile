@@ -33,6 +33,7 @@
     "@types/react-swipeable-views": "^0.12.1",
     "@types/redux-thunk": "^2.1.0",
     "@types/webpack": "^4.4.0",
+    "@types/weixin": "0.0.1",
     "antd-mobile": "^2.1.9",
     "awesome-typescript-loader": "^3.2.2",
     "babel-core": "^6.26.0",
