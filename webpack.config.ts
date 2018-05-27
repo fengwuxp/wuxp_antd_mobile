@@ -8,7 +8,7 @@ const config = {
 
 config.plugins.push(
     new HtmlWebPackPlugin({
-        template: './src/index.html',
+        template: './src/index.ejs',
         filename: "index.html",
         title: "antd mobile template",
         chunks: ['app'],

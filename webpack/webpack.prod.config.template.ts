@@ -26,7 +26,7 @@ config.optimization = { // 提取js 第三方库等
     }
 };
 
-let uglifyJsPlugin = new UglifyJsPlugin({
+let uglifyJsPlugin = new (UglifyJsPlugin as any)({
     parallel: true,
     uglifyOptions: {
 
@@ -113,7 +113,7 @@ let uglifyJsPlugin = new UglifyJsPlugin({
          */
         safari10: false,
     },
-}) as any;
+});
 config.plugins.push(
     uglifyJsPlugin
 );

@@ -7,6 +7,7 @@
   "description": "react antd mobile typescript",
   "main": "Appt.tsx",
   "scripts": {
+    "build-t": "cross-env TS_NODE_PROJECT='./tsconfig-for-webpack-config.json' && ts-node ./script/build.ts",
     "serve-dev": "cross-env TS_NODE_PROJECT='./tsconfig-for-webpack-config.json' _self=1 webpack-dev-server --config ./webpack.local.dev.ts  --devtool eval --progress --colors  --watch --port 10203 --open",
     "build": "rm -rf ./dist &&  cross-env TS_NODE_PROJECT='./tsconfig-for-webpack-config.json' _self=1 webpack --config ./webpack.config.ts  --progress --colors",
     "build:prod": "rm -rf ./dist &&  cross-env TS_NODE_PROJECT='./tsconfig-for-webpack-config.json' _self=1 webpack --config ./webpack.prod.config.ts   --progress --colors",
@@ -61,6 +62,7 @@
     "copy-webpack-plugin": "^4.5.1",
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.11",
+    "ejs-loader": "^0.3.1",
     "enquire-js": "^0.2.1",
     "es5-shim": "^4.5.9",
     "es6-promise": "^4.1.1",
@@ -137,5 +139,8 @@
     "webpack-dev-server": "^3.1.4",
     "wuxp_react_dynamic_router": "0.0.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "raw-loader": "^0.5.1",
+    "write-file-webpack-plugin": "^4.3.2"
+  }
 }

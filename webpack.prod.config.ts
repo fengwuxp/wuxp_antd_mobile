@@ -25,8 +25,8 @@ config.plugins.unshift(
         }
     }),
     new HtmlWebPackPlugin({
-        template: './src/index.html',
-        filename: "index.html",
+        template: "./src/jsp/index.ejs",
+        filename: "index.jsp",
         title: "react App",
         chunks: ['app', 'common'],
         inject: true,

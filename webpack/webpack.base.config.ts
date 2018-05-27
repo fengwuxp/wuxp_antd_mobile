@@ -1,9 +1,9 @@
 import * as webpack from "webpack";
 import * as path from "path";
 import * as ExtractTextWebpackPlugin from "extract-text-webpack-plugin";
-
+// import CleanWebpackPlugin from "clean-webpack-plugin";
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-
+// const WriteFilePlugin = require('write-file-webpack-plugin');
 import {isExclude} from "./WebpackUtils";
 import getLessLoader from "./getLessLoader";
 import {scssModuleLoader, cssModuleLoader} from "./cssModuleUtils";
@@ -162,7 +162,20 @@ export const getWebpackBaseConfig = function (options: GetWebpackBaseConfigOptio
 
                         }
                     ]
-                }
+                },
+                {
+                    test: /\.ejs$/,
+                    loader: 'ejs-loader',
+                    options: {
+                        variable: 'data',
+                        interpolate : '\\{\\{(.+?)\\}\\}',
+                        evaluate : '\\[\\[(.+?)\\]\\]'
+                    }
+                },
+                // {
+                //     test: /\.jsp$/,
+                //     loader: 'raw-loader'
+                // },
             ]
         },
         // When importing a module whose path matches one of the following, just
@@ -177,7 +190,11 @@ export const getWebpackBaseConfig = function (options: GetWebpackBaseConfigOptio
             new ExtractTextWebpackPlugin({
                 filename: "[name].css",
                 allChunks: true
-            })
+            }),
+            // new WriteFilePlugin({
+            //     // test: /^((?!\.hot-update).)*$/,
+            //     test: /\.jsp|\.tld|\.xml$/,
+            // })
         ]
     };
     //是否打release包
