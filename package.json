@@ -69,6 +69,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "fetch-detector": "^1.0.1",
     "fetch-ie8": "^1.5.0",
+    "file-loader": "^1.1.11",
     "file-saver": "^1.3.8",
     "happypack": "^4.0.1",
     "hmacsha1": "^1.0.0",
