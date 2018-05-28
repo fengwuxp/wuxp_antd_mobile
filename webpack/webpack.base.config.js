@@ -151,10 +151,6 @@ getWebpackBaseConfig = function (options) {
                     ]
                 },
                 {
-                    test: /\.jade$/,
-                    loader: 'jade-loader'
-                },
-                {
                     test: /\.art$/,
                     loader: "art-template-loader",
                     options: {
