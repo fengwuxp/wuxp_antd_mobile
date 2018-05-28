@@ -12,7 +12,7 @@ let jspArtTemplate = `<%@ page contentType="text/html;charset=UTF-8" language="j
                <%@ page contentType="text/html;charset=UTF-8" language="java" %>
                <%  
                  request.setAttribute("memberJSON", JSON.toJSONString(request.getAttribute("member"))); 
-                 request.setAttribute("wxMpUserJSON", JSON.toJSONString(request.getAttribute("wxMpUser")))
+                 request.setAttribute("wxMpUserJSON", JSON.toJSONString(request.getAttribute("wxMpUser")));
                 %>`;
 
 config.plugins.unshift(
