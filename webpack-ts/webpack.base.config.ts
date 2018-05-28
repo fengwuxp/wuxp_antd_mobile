@@ -162,20 +162,7 @@ export const getWebpackBaseConfig = function (options: GetWebpackBaseConfigOptio
 
                         }
                     ]
-                },
-                {
-                    test: /\.ejs$/,
-                    loader: 'ejs-loader',
-                    options: {
-                        variable: 'data',
-                        interpolate : '\\{\\{(.+?)\\}\\}',
-                        evaluate : '\\[\\[(.+?)\\]\\]'
-                    }
-                },
-                // {
-                //     test: /\.jsp$/,
-                //     loader: 'raw-loader'
-                // },
+                }
             ]
         },
         // When importing a module whose path matches one of the following, just

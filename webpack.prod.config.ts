@@ -1,10 +1,20 @@
 import * as baseConfig from "./webpack/webpack.prod.config.template"
 import * as webpack from "webpack";
-const HtmlWebPackPlugin=require("html-webpack-plugin");
+
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const config = {
     ...baseConfig,
 };
+
+let jspArtTemplate = `<%@ page contentType="text/html;charset=UTF-8" language="java" %> 
+               <%@ page import="com.alibaba.fastjson.JSON" %>
+               <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+               <%  
+                 request.setAttribute("memberJSON", JSON.toJSONString(request.getAttribute("member"))); 
+                 request.setAttribute("wxMpUserJSON", JSON.toJSONString(request.getAttribute("wxMpUser")))
+                %>`;
+
 config.plugins.unshift(
     new webpack.DefinePlugin({
         'process.env': {
@@ -24,11 +34,13 @@ config.plugins.unshift(
         }
     }),
     new HtmlWebPackPlugin({
-        template: "./src/jsp/index.ejs",
+        template: "./src/jsp/index.art",
         filename: "index.jsp",
-        title: "react App",
-        chunks: ['app', 'common'],
-        inject: true,
+        title: "antd mobile template",
+        chunks: ['app'],
+        inject: false,
+        jspArtTemplate: jspArtTemplate
+
     }),
 );
 

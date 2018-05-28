@@ -8,3 +8,5 @@ webpack.config.ts
 webpack.local.dev.ts
 webpack.prod.config.ts
 tsconfig.json
+script
+webpack-ts

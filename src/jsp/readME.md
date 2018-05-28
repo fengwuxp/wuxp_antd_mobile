@@ -1,1 +1,1 @@
-##### 使用ejs生成js文件
+##### 使用art生成 jsp 文件  git https://github.com/aui/art-template

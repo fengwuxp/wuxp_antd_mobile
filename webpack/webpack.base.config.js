@@ -1,12 +1,12 @@
-const webpack=require("webpack");
-const path=require("path");
-const ExtractTextWebpackPlugin=require("extract-text-webpack-plugin");
+const webpack = require("webpack");
+const path = require("path");
+const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-const  {isExclude}=require("./WebpackUtils");
+const {isExclude} = require("./WebpackUtils");
 
-const  {getLessLoader}=require("./getLessLoader");
-const  {scssModuleLoader,cssModuleLoader}=require("./cssModuleUtils");
+const {getLessLoader} = require("./getLessLoader");
+const {scssModuleLoader, cssModuleLoader} = require("./cssModuleUtils");
 
 
 function getWebpackConfig() {
@@ -22,14 +22,12 @@ const {
 } = getWebpackConfig();
 
 
-
-
 /**
  * 获取打包配置
  * @param {GetWebpackBaseConfigOptions} options
  * @return {webpack.Configuration}
  */
- getWebpackBaseConfig = function (options) {
+getWebpackBaseConfig = function (options) {
 
     console.log("---------初始化打包配置--------", options);
 
@@ -37,7 +35,7 @@ const {
     //默认打包目录
     const packPath = path.resolve("src", '../dist');
 
-    const config= {
+    const config = {
         entry: {
             app: path.resolve('src', 'App'),
         },
@@ -153,18 +151,18 @@ const {
                     ]
                 },
                 {
-                    test: /\.ejs$/,
-                    loader: 'ejs-loader',
-                    options: {
-                        variable: 'data',
-                        interpolate : '\\{\\{(.+?)\\}\\}',
-                        evaluate : '\\[\\[(.+?)\\]\\]'
-                    }
+                    test: /\.jade$/,
+                    loader: 'jade-loader'
                 },
-                // {
-                //     test: /\.jsp$/,
-                //     loader: 'raw-loader'
-                // },
+                {
+                    test: /\.art$/,
+                    loader: "art-template-loader",
+                    options: {
+                        escape:false
+                        // art-template options (if necessary)
+                        // @see https://github.com/aui/art-template
+                    }
+                }
             ]
         },
         // When importing a module whose path matches one of the following, just
@@ -213,6 +211,6 @@ const {
 };
 
 
- module.exports={
-     getWebpackBaseConfig
- };
+module.exports = {
+    getWebpackBaseConfig
+};

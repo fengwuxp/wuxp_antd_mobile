@@ -33,6 +33,8 @@
     "@types/webpack": "^4.4.0",
     "@types/weixin": "0.0.1",
     "antd-mobile": "^2.1.9",
+    "art-template": "^4.12.2",
+    "art-template-loader": "^1.4.3",
     "awesome-typescript-loader": "^5.0.0",
     "babel-core": "^6.26.0",
     "babel-istanbul": "^0.11.0",
@@ -90,6 +92,7 @@
     "omit.js": "^1.0.0",
     "open-browser-webpack-plugin": "0.0.5",
     "path-to-regexp": "^2.2.0",
+    "po2json": "^0.4.5",
     "postcss-cssnext": "^3.1.0",
     "postcss-flexbugs-fixes": "^3.3.1",
     "postcss-loader": "^2.1.5",
@@ -138,9 +141,10 @@
   },
   "devDependencies": {
     "@types/html-webpack-plugin": "^2.30.3",
+
+    "raw-loader": "^0.5.1",
     "ts-node": "^6.0.5",
     "tsconfig-paths": "^3.3.2",
-    "raw-loader": "^0.5.1",
     "write-file-webpack-plugin": "^4.3.2"
   }
 }
