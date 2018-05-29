@@ -15,6 +15,10 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
     extends AbstractSimpleQueryView<Q, E, P, S> {
 
 
+    constructor(props: P, context: any, isPaging?: boolean) {
+        super(props, context, isPaging);
+    }
+
     /**
      * 初始长度 -1 表示还未进行查询
      * @type {number}
@@ -66,6 +70,9 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
     };
 
     protected onEndReached = (event) => {
+        if (this.isPaging) {
+            return;
+        }
         this.serialQuery();
     };
 
