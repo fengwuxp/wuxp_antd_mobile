@@ -87,6 +87,7 @@ export default class InputPhoneCode extends React.Component<InputPhoneCodeProps,
         } justify={"between"}>
             <InputItem type="number"
                        clear
+                       style={{width: 170}}
                        onChange={onChange}
                        defaultValue={value}
                        placeholder={placeholder || "短信验证码"}

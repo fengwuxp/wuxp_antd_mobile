@@ -15,6 +15,7 @@ export class UnifiedRespHandleFilter extends ApiAbstractFilter<FetchOption, ApiR
     postHandle(resp: ApiResp<any>, context?: any): boolean {
         const {message, success, actions} = resp;
 
+        console.log("-------unified resp--->", success, count)
         if (success) {
             return true;
         }
@@ -23,9 +24,10 @@ export class UnifiedRespHandleFilter extends ApiAbstractFilter<FetchOption, ApiR
         }
         //请求失败
         count++;
-        Toast.info(message ? message : "操作失败", 2, () => {
+        Toast.fail(message ? message : "操作失败", 2);
+        setTimeout(function () {
             count--;
-        });
+        }, 2000);
         return false;
     }
 }
