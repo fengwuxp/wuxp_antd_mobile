@@ -5,13 +5,21 @@ import React from "react";
 import {ApiQueryReq} from "typescript_api_sdk/src/api/model/ApiQueryReq";
 
 
+/**
+ * 基于antd的 listView
+ */
 export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
+    E,
     P extends ViewProps,
     S extends SimpleQueryViewState>
-    extends AbstractSimpleQueryView<Q, P, S> {
+    extends AbstractSimpleQueryView<Q, E, P, S> {
 
 
-    protected listDataLength: number = 1;
+    /**
+     * 初始长度 -1 表示还未进行查询
+     * @type {number}
+     */
+    protected listDataLength: number = -1;
 
     /**
      * 默认的data sources实现
@@ -69,9 +77,25 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
         </div>
     };
 
+    /**
+     * 更新列表数据长度
+     * @param length
+     */
+    protected updateListDataLength = (length) => {
+
+        if (this.listDataLength) {
+            this.listDataLength = 0
+        }
+        this.listDataLength += length;
+    };
+
+    /**
+     * 列表数据是否为空
+     * @return {boolean}
+     */
     protected listViewIsEmpty = (): boolean => {
 
-        return this.listDataLength === 0 && this.queryHelper.isEnd();
+        return this.listDataLength === 0 && (this.queryHelper.isEnd() || this.queryHelper.req.queryPage > 1);
     };
 
     protected abstract renderEmptyView: () => React.ReactNode;
