@@ -3,6 +3,7 @@ import {ViewProps} from "wuxp_react_dynamic_router/src/layout/view/AbstractSimpl
 import {ListView} from "antd-mobile";
 import React from "react";
 import {ApiQueryReq} from "typescript_api_sdk/src/api/model/ApiQueryReq";
+import {AntdViewRenderHelper} from "./AntdAbstractView";
 
 
 /**
@@ -17,6 +18,7 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
 
     constructor(props: P, context: any, isPaging?: boolean) {
         super(props, context, isPaging);
+        this.renderHelper = new AntdViewRenderHelper();
     }
 
     /**
@@ -86,12 +88,13 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
 
     /**
      * 更新列表数据长度
-     * @param length
+     * @param {number} length
+     * @param {boolean} rest 是否重置
      */
-    protected updateListDataLength = (length) => {
+    protected updateListDataLength = (length: number, rest: boolean = false) => {
 
-        if (this.listDataLength) {
-            this.listDataLength = 0
+        if (this.listDataLength === -1 || rest) {
+            this.listDataLength = 0;
         }
         this.listDataLength += length;
     };
