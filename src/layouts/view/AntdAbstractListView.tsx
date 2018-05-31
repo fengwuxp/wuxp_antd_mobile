@@ -3,17 +3,32 @@ import {ViewProps} from "wuxp_react_dynamic_router/src/layout/view/AbstractSimpl
 import {ListView} from "antd-mobile";
 import React from "react";
 import {ApiQueryReq} from "typescript_api_sdk/src/api/model/ApiQueryReq";
-import {AntdViewRenderHelper} from "./AntdAbstractView";
+import {AntdAbstractViewState, AntdViewRenderHelper} from "./AntdAbstractView";
 
+
+export interface AntdAbstractListViewProps extends ViewProps {
+
+}
+
+export interface AntdAbstractListViewState extends SimpleQueryViewState, AntdAbstractViewState {
+
+}
 
 /**
  * 基于antd的 listView
  */
 export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
     E,
-    P extends ViewProps,
-    S extends SimpleQueryViewState>
+    P extends AntdAbstractListViewProps,
+    S extends AntdAbstractListViewState>
     extends AbstractSimpleQueryView<Q, E, P, S> {
+
+
+    /**
+     * 初始长度 -1 表示还未进行查询
+     * @type {number}
+     */
+    protected listDataLength: number = -1;
 
 
     constructor(props: P, context: any, isPaging?: boolean) {
@@ -21,11 +36,11 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
         this.renderHelper = new AntdViewRenderHelper();
     }
 
-    /**
-     * 初始长度 -1 表示还未进行查询
-     * @type {number}
-     */
-    protected listDataLength: number = -1;
+
+    renderHeader = () => {
+        return this.renderHelper.renderHeader(this.state.navBarTitle, {})
+    };
+
 
     /**
      * 默认的data sources实现

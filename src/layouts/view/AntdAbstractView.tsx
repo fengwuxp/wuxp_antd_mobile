@@ -14,6 +14,7 @@ export interface AntdAbstractViewProps extends ViewProps {
 
 export interface AntdAbstractViewState extends ViewState {
 
+    navBarTitle: string;
 }
 
 export class AntdViewRenderHelper implements ViewRenderHelper {
@@ -38,7 +39,6 @@ export class AntdViewRenderHelper implements ViewRenderHelper {
 export default abstract class AntdAbstractView<P extends AntdAbstractViewProps, S extends AntdAbstractViewState>
     extends AbstractSimpleView<P, S> {
 
-    protected viewTitle: string;
 
     constructor(props: P, context: any) {
         super(props, context);
@@ -46,6 +46,6 @@ export default abstract class AntdAbstractView<P extends AntdAbstractViewProps, 
     }
 
     renderHeader = () => {
-        return this.renderHelper.renderHeader(this.viewTitle)
+        return this.renderHelper.renderHeader(this.state.navBarTitle, {})
     }
 }
