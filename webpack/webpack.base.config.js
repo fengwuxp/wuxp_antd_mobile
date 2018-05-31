@@ -104,7 +104,6 @@ getWebpackBaseConfig = function (options) {
                     use: ExtractTextWebpackPlugin.extract({
                         fallback: "style-loader",
                         use: [
-                            // require.resolve("style-loader"),
                             scssModuleLoader,
                             {
                                 loader: "postcss-loader",
@@ -154,7 +153,7 @@ getWebpackBaseConfig = function (options) {
                     test: /\.art$/,
                     loader: "art-template-loader",
                     options: {
-                        escape:false
+                        escape: false
                         // art-template options (if necessary)
                         // @see https://github.com/aui/art-template
                     }
@@ -167,11 +166,12 @@ getWebpackBaseConfig = function (options) {
         // dependencies, which allows browsers to cache those libraries between builds.
         externals: {
             "react": "React",
-            "react-dom": "ReactDOM"
+            "react-dom": "ReactDOM",
+            "moment": "moment"
         },
         plugins: [
             new ExtractTextWebpackPlugin({
-                filename: "[name].css",
+                filename: "style.css",
                 allChunks: true
             }),
             // new WriteFilePlugin({

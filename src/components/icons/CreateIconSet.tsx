@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 const DEFAULT_ICON_SIZE = 12;
 
 
-export interface IconProps {
+export interface IconProps<T> {
 
-    name: string;
+    name: T;
 
     family?: string;
 
@@ -29,13 +29,13 @@ export interface GlyphMap {
  * @param fontFamily
  * @return {Icon}
  */
-export default function createIconSet(glyphMap: GlyphMap, fontFamily: string) {
+export default function createIconSet<T=string>(glyphMap: GlyphMap, fontFamily: string) {
 
     let fontReference = fontFamily;
 
     const IconNamePropType = PropTypes.oneOf(Object.keys(glyphMap));
 
-    class Icon extends PureComponent<IconProps, any> {
+    class Icon extends PureComponent<IconProps<T>, any> {
 
         static propTypes = {
             name: IconNamePropType,
@@ -53,7 +53,8 @@ export default function createIconSet(glyphMap: GlyphMap, fontFamily: string) {
         render() {
             const {name, size, color} = this.props;
 
-            let glyph = name ? glyphMap[name] || '?' : '';
+            let glyph= name ? glyphMap[name as any] || '?' : '';
+
             if (typeof glyph === 'number') {
                 glyph = String.fromCharCode(glyph);
             }
