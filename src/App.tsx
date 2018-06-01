@@ -19,16 +19,7 @@ setDefaultLoadingComponent(() => {
 ReactDOM.render(
     <Provider store={antdMoiboleStore}>
         <ConnectedRouter history={history}>
-            <Switch>
-                <Route path="/login" component={UserLayout}/>
-                <Route path="/logout" component={UserLayout}/>
-                <AuthorizedRoute
-                    path="/"
-                    isLogin={false}
-                    render={(props: any) => <BaseLayout {...props} />}
-                    redirectPath="/login"
-                />
-            </Switch>
+            <Route path="/" render={(props: any) => <BaseLayout {...props}/>}/>
         </ConnectedRouter>
     </Provider>,
     document.getElementById("app"));

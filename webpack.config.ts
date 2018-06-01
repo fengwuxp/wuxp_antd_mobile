@@ -1,9 +1,12 @@
 import * as baseConfig from "./webpack/webpack.config.template";
 import * as HtmlWebPackPlugin from "html-webpack-plugin";
+import * as webpack from "webpack";
 
-const config = {
+const config: webpack.Configuration = {
     ...baseConfig,
 };
+
+// config.output.publicPath = '/weex/antd/';
 
 config.plugins.push(
     new HtmlWebPackPlugin({

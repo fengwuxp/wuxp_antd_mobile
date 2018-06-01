@@ -174,6 +174,7 @@ getWebpackBaseConfig = function (options) {
                 filename: "style.css",
                 allChunks: true
             }),
+            // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn/),
             // new WriteFilePlugin({
             //     // test: /^((?!\.hot-update).)*$/,
             //     test: /\.jsp|\.tld|\.xml$/,

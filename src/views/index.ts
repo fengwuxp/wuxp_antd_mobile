@@ -3,6 +3,7 @@ import asyncComponent from "wuxp_react_dynamic_router/src/components/load/AsyncC
 
 
 const routers: Array<NamedRouteConfig> = [
+
     {
         path: '/',
         component: asyncComponent(() => import(/* webpackChunkName: "home" */ './HomeView'))
