@@ -14,7 +14,7 @@ export interface AntdAbstractViewProps extends ViewProps {
 
 export interface AntdAbstractViewState extends ViewState {
 
-    navBarTitle: string;
+    navBarTitle?: string;
 }
 
 export class AntdViewRenderHelper implements ViewRenderHelper {

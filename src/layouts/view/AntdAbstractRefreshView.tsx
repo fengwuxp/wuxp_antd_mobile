@@ -1,15 +1,14 @@
-import AbstractSimpleQueryView, {SimpleQueryViewState} from "wuxp_react_dynamic_router/src/layout/view/AbstractSimpleQueryView";
 import {ViewProps} from "wuxp_react_dynamic_router/src/layout/view/AbstractSimpleView";
-import {ApiQueryReq} from "typescript_api_sdk/src/api/model/ApiQueryReq";
 import * as React from "react";
 import {PullToRefresh} from "antd-mobile";
 import {Indicator} from 'rmc-pull-to-refresh/lib/PropsType';
+import AntdAbstractView, {AntdAbstractViewState} from "./AntdAbstractView";
 
-export interface AntdAbstractQueryViewProps extends ViewProps {
+export interface AntdAbstractRefreshViewProps extends ViewProps {
 
 }
 
-export interface AntdAbstractQueryViewState extends SimpleQueryViewState {
+export interface AntdAbstractRefreshViewState extends AntdAbstractViewState {
 
     refreshing: boolean;
 }
@@ -17,14 +16,13 @@ export interface AntdAbstractQueryViewState extends SimpleQueryViewState {
 const TPullToRefresh = PullToRefresh as any;
 
 
-export default abstract class AntdAbstractQueryView<Q extends ApiQueryReq, E,
-    P extends AntdAbstractQueryViewProps,
-    S extends AntdAbstractQueryViewState> extends AbstractSimpleQueryView<Q, E, P, S> {
+export default abstract class AntdAbstractRefreshView<P extends AntdAbstractRefreshViewProps, S extends AntdAbstractRefreshViewState>
+    extends AntdAbstractView<P, S> {
 
     protected pullToRefresh;
 
-    constructor(props: P, context: any, isPaging: boolean) {
-        super(props, context, isPaging);
+    constructor(props: P, context: any) {
+        super(props, context);
     }
 
 
@@ -39,7 +37,7 @@ export default abstract class AntdAbstractQueryView<Q extends ApiQueryReq, E,
                                onRefresh={this.onRefresh}>{childrn}</TPullToRefresh>
     };
 
-    getIndicator = ():Indicator=> {
+    getIndicator = (): Indicator => {
         return {
             activate: "松开刷新",
             deactivate: '上拉可以刷新',
