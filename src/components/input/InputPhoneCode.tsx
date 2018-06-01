@@ -78,13 +78,18 @@ export default class InputPhoneCode extends React.Component<InputPhoneCodeProps,
 
         const {defaultButtonText, placeholder, onChange, maxLength} = this.props;
         const {disabledButton, value, buttonText} = this.state;
+        // space-between
+        return <div
+            className="am-list-item"
+            style={
+                {
+                    backgroundColor: "#ffffff",
+                    paddingRight: 15,
+                    justifyContent: "space-between",
+                    paddingLeft:0
+                }
 
-        return <Flex style={
-            {
-                backgroundColor: "#ffffff",
-                paddingRight: 15
-            }
-        } justify={"between"}>
+            }>
             <InputItem type="number"
                        clear
                        style={{width: 170}}
@@ -97,7 +102,7 @@ export default class InputPhoneCode extends React.Component<InputPhoneCodeProps,
                     onClick={this.clickButton}
                     disabled={disabledButton}
                     size={"small"}>{buttonText}</Button>
-        </Flex>;
+        </div>;
     }
 
     protected clickButton = () => {
