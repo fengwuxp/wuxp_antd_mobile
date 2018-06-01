@@ -29,7 +29,7 @@ export default abstract class AntdAbstractRefreshView<P extends AntdAbstractRefr
     }
 
 
-    protected renderWrapper = (childrn: React.ReactNode) => {
+    protected renderWrapper = (children: React.ReactNode) => {
         return <TPullToRefresh direction={"down"}
                                distanceToRefresh={25}
                                damping={60}
@@ -37,7 +37,7 @@ export default abstract class AntdAbstractRefreshView<P extends AntdAbstractRefr
                                ref={el => this.pullToRefresh = el}
                                indicator={this.getIndicator}
                                refreshing={this.state.refreshing}
-                               onRefresh={this.onRefresh}>{childrn}</TPullToRefresh>
+                               onRefresh={this.onRefresh}>{children}</TPullToRefresh>
     };
 
     getIndicator = (): Indicator => {
