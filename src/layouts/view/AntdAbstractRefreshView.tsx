@@ -16,6 +16,9 @@ export interface AntdAbstractRefreshViewState extends AntdAbstractViewState {
 const TPullToRefresh = PullToRefresh as any;
 
 
+/**
+ * 带下来刷新的普通视图
+ */
 export default abstract class AntdAbstractRefreshView<P extends AntdAbstractRefreshViewProps, S extends AntdAbstractRefreshViewState>
     extends AntdAbstractView<P, S> {
 

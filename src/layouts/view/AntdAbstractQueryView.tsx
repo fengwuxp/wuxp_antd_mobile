@@ -17,6 +17,9 @@ export interface AntdAbstractQueryViewState extends SimpleQueryViewState {
 const TPullToRefresh = PullToRefresh as any;
 
 
+/**
+ * 带下来刷新的查询视图
+ */
 export default abstract class AntdAbstractQueryView<Q extends ApiQueryReq, E,
     P extends AntdAbstractQueryViewProps,
     S extends AntdAbstractQueryViewState> extends AbstractSimpleQueryView<Q, E, P, S> {
