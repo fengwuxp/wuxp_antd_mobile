@@ -34,7 +34,7 @@ export default abstract class AntdAbstractQueryView<Q extends ApiQueryReq, E,
     protected renderWrapper = (children: React.ReactNode) => {
         return <TPullToRefresh direction={"down"}
                                distanceToRefresh={25}
-                               damping={60}
+                               damping={100}
                                style={{height: "100%", overflowY: 'scroll'}}
                                ref={el => this.pullToRefresh = el}
                                indicator={this.getIndicator}
