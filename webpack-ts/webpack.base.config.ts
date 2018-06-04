@@ -74,7 +74,7 @@ export const getWebpackBaseConfig = function (options: GetWebpackBaseConfigOptio
                             options: {
                                 presets: ['es2015', 'stage-2'],
                                 compact: true
-                            }
+                            },
                         }
                     ]
                 },

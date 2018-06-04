@@ -23,7 +23,7 @@ export class AntdViewRenderHelper implements ViewRenderHelper {
 
     renderHeader = (title: string, p: NavBarProps): React.ReactNode => {
 
-        console.log("---window.history.length------",window.history.length)
+        console.log("---window.history.length------",window.history.length);
         const props: NavBarProps = {
             ...p,
             icon: window.history.length >= 2 ? <Icon type="left" size={"md"}/> : null,

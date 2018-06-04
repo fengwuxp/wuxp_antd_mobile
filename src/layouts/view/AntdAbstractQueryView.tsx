@@ -2,56 +2,35 @@ import AbstractSimpleQueryView, {SimpleQueryViewState} from "wuxp_react_dynamic_
 import {ViewProps} from "wuxp_react_dynamic_router/src/layout/view/AbstractSimpleView";
 import {ApiQueryReq} from "typescript_api_sdk/src/api/model/ApiQueryReq";
 import * as React from "react";
-import {PullToRefresh} from "antd-mobile";
-import {Indicator} from 'rmc-pull-to-refresh/lib/PropsType';
+import {AntdRefreshView} from "../decorators/AntdRefreshView";
+import {RefreshView} from "wuxp_react_dynamic_router/src/layout/view/RefreshView";
+import {AntdRefreshState} from "./AntdAbstractRefreshView";
 
 export interface AntdAbstractQueryViewProps extends ViewProps {
 
 }
 
-export interface AntdAbstractQueryViewState extends SimpleQueryViewState {
+export interface AntdAbstractQueryViewState extends SimpleQueryViewState, AntdRefreshState {
 
 }
 
 
-const TPullToRefresh = PullToRefresh as any;
-
-
 /**
- * 带下来刷新的查询视图
+ * 带下拉刷新的查询视图
  */
+@AntdRefreshView()
 export default abstract class AntdAbstractQueryView<Q extends ApiQueryReq, E,
     P extends AntdAbstractQueryViewProps,
-    S extends AntdAbstractQueryViewState> extends AbstractSimpleQueryView<Q, E, P, S> {
+    S extends AntdAbstractQueryViewState> extends AbstractSimpleQueryView<Q, E, P, S>
+    implements RefreshView {
 
-    protected pullToRefresh;
 
     constructor(props: P, context: any, isPaging: boolean) {
         super(props, context, isPaging);
     }
 
+    onRefreshEventHandle: () => void;
 
-    protected renderWrapper = (children: React.ReactNode) => {
-        return <TPullToRefresh direction={"down"}
-                               distanceToRefresh={25}
-                               damping={100}
-                               style={{height: "100%", overflowY: 'scroll'}}
-                               ref={el => this.pullToRefresh = el}
-                               indicator={this.getIndicator}
-                               refreshing={this.state.refreshing}
-                               onRefresh={this.onRefresh}>{children}</TPullToRefresh>
-    };
+    abstract onRefresh: () => Promise<any>;
 
-    getIndicator = ():Indicator=> {
-        return {
-            activate: "松开刷新",
-            deactivate: '上拉可以刷新',
-            release: "--",
-            finish: "刷新完成"
-        }
-    };
-
-    getScrollContainer = (): React.ReactNode => null;
-
-    abstract onRefresh: () => void;
 }
