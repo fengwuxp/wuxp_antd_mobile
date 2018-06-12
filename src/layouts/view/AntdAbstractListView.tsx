@@ -1,9 +1,12 @@
 import AbstractSimpleQueryView, {SimpleQueryViewState,} from "wuxp_react_dynamic_router/src/layout/view/AbstractSimpleQueryView";
 import {ViewProps} from "wuxp_react_dynamic_router/src/layout/view/AbstractSimpleView";
-import {ListView} from "antd-mobile";
+import {ListView, Flex, Icon, PullToRefresh} from "antd-mobile";
+import {Indicator} from "rmc-pull-to-refresh/lib/PropsType";
 import React from "react";
 import {ApiQueryReq} from "typescript_api_sdk/src/api/model/ApiQueryReq";
 import {AntdAbstractViewState, AntdViewRenderHelper} from "./AntdAbstractView";
+import {RefreshView} from "wuxp_react_dynamic_router/src/layout/view/RefreshView";
+import {AntdRefreshListView} from "../decorators/AntdRefreshListView";
 
 
 export interface AntdAbstractListViewProps extends ViewProps {
@@ -17,11 +20,12 @@ export interface AntdAbstractListViewState extends SimpleQueryViewState, AntdAbs
 /**
  * 基于antd的 listView
  */
+@AntdRefreshListView()
 export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
     E,
     P extends AntdAbstractListViewProps,
     S extends AntdAbstractListViewState>
-    extends AbstractSimpleQueryView<Q, E, P, S> {
+    extends AbstractSimpleQueryView<Q, E, P, S> implements RefreshView {
 
 
     /**
@@ -86,8 +90,15 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
         return dataSource
     };
 
+    onRefreshEventHandle: () => void;
+
+    abstract onRefresh: () => Promise<any>;
+
+
+    protected getPullToRefresh?: () => React.ReactNode;
+
     protected onEndReached = (event) => {
-        if (this.isPaging) {
+        if (!this.isPaging) {
             return;
         }
         this.serialQuery();
@@ -123,7 +134,10 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
         return this.listDataLength === 0 && (this.queryHelper.isEnd() || this.queryHelper.req.queryPage > 1);
     };
 
+
     protected abstract renderEmptyView: () => React.ReactNode;
 
     protected abstract renderRowItem: (rowData: any, sectionID: string | number, rowID: string | number, highlightRow?: boolean) => React.ReactElement<any>;
+
+
 }

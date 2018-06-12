@@ -123,6 +123,7 @@
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
+    "rmc-pull-to-refresh": "^1.0.11",
     "rollbar": "^2.3.4",
     "sass-loader": "^6.0.7",
     "slate": "^0.33.4",
@@ -141,7 +142,6 @@
   },
   "devDependencies": {
     "@types/html-webpack-plugin": "^2.30.3",
-
     "raw-loader": "^0.5.1",
     "ts-node": "^6.0.5",
     "tsconfig-paths": "^3.3.2",
