@@ -59,7 +59,8 @@ getWebpackBaseConfig = function (options) {
                         {
                             loader: "babel-loader",
                             options: {
-                                presets: ['es2015', 'stage-2'],
+                                // presets: ['es2015', 'stage-2'],
+                                presets: ["react", "env"],
                                 compact: true
                             }
                         }
