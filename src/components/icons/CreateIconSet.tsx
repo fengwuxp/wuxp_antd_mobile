@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {MouseEventHandler, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -17,7 +17,9 @@ export interface IconProps<T> {
 
     children?: React.ReactNode;
 
-    style?: React.CSSProperties
+    style?: React.CSSProperties;
+
+    onClick?: MouseEventHandler<any>;
 }
 
 export interface GlyphMap {
