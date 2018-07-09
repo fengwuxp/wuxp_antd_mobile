@@ -1,5 +1,6 @@
 import React, {MouseEventHandler, PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {isFunction} from "util";
 
 
 const DEFAULT_ICON_SIZE = 12;
@@ -55,7 +56,7 @@ export default function createIconSet<T=string>(glyphMap: GlyphMap, fontFamily: 
         render() {
             const {name, size, color} = this.props;
 
-            let glyph= name ? glyphMap[name as any] || '?' : '';
+            let glyph = name ? glyphMap[name as any] || '?' : '';
 
             if (typeof glyph === 'number') {
                 glyph = String.fromCharCode(glyph);
@@ -69,7 +70,11 @@ export default function createIconSet<T=string>(glyphMap: GlyphMap, fontFamily: 
             };
 
             return (
-                <i style={styleOverrides}>
+                <i style={styleOverrides} onClick={(event)=>{
+                    if ( isFunction( this.props.onClick)){
+                        this.props.onClick(event);
+                    }
+                }}>
                     {glyph}
                     {this.props.children}
                 </i>
