@@ -15,6 +15,10 @@ export interface AntdAbstractListViewProps extends ViewProps {
 
 export interface AntdAbstractListViewState extends SimpleQueryViewState, AntdAbstractViewState {
 
+    /**
+     * 列表数据源
+     */
+    dataSource:any
 }
 
 /**

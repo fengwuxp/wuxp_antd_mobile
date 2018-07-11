@@ -54,7 +54,7 @@ export default function createIconSet<T=string>(glyphMap: GlyphMap, fontFamily: 
         };
 
         render() {
-            const {name, size, color} = this.props;
+            const {name, size, color,style} = this.props;
 
             let glyph = name ? glyphMap[name as any] || '?' : '';
 
@@ -67,6 +67,7 @@ export default function createIconSet<T=string>(glyphMap: GlyphMap, fontFamily: 
                 fontStyle: 'normal',
                 fontSize: size,
                 color,
+                ...style
             };
 
             return (
