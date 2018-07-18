@@ -14,10 +14,6 @@ export interface AntdAbstractListViewProps extends ViewProps {
 }
 
 export interface AntdAbstractListViewState extends SimpleQueryViewState, AntdAbstractViewState {
-
-    /**
-     * 列表数据源
-     */
     dataSource:any
 }
 
@@ -52,10 +48,10 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
 
     /**
      * 默认的data sources实现
-     * gen data source
+     * @param options
      * @return {any}
      */
-    genDataSource = () => {
+    genDataSource = (options:any={}) => {
         const dataSource = new ListView.DataSource({
 
             /**
@@ -67,7 +63,7 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
              */
             getRowData: (dataBlob, sectionID, rowID) => {
                 let element = dataBlob[sectionID][rowID];
-                console.log("-getRowData->", element, sectionID, rowID);
+                // console.log("-getRowData->", element, sectionID, rowID);
                 return element;
             },
 
@@ -78,7 +74,7 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
              * @return {boolean}
              */
             rowHasChanged: (row1, row2) => {
-                console.log("-------rowHasChanged-------", row1, row2);
+                // console.log("-------rowHasChanged-------", row1, row2);
                 return row1 !== row2
             },
 
@@ -89,6 +85,7 @@ export default abstract class AntdAbstractListView<Q extends ApiQueryReq,
             //     console.log("-------rowHasChanged-------", s1, s2);
             //     return s1 !== s2;
             // }
+            ...options
         });
 
         return dataSource

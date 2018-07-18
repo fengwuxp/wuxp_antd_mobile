@@ -47,8 +47,6 @@ interface InputPhoneCodeState {
     disabledButton?: boolean;
 
     buttonText?: string;
-
-    value?: string;
 }
 
 /**
@@ -60,13 +58,12 @@ export default class InputPhoneCode extends React.Component<InputPhoneCodeProps,
     constructor(props: InputPhoneCodeProps, context: any) {
         super(props, context);
 
-        const {defaultButtonText, renderButtonText, value} = this.props;
+        const {defaultButtonText, renderButtonText} = this.props;
 
 
         this.state = {
             disabledButton: false,
             buttonText: defaultButtonText || "获取短信验证码",
-            value
         };
 
         if (isFunction(renderButtonText)) {
@@ -76,8 +73,8 @@ export default class InputPhoneCode extends React.Component<InputPhoneCodeProps,
 
     render() {
 
-        const {defaultButtonText, placeholder, onChange, maxLength} = this.props;
-        const {disabledButton, value, buttonText} = this.state;
+        const {defaultButtonText, placeholder,value, onChange, maxLength} = this.props;
+        const {disabledButton, buttonText} = this.state;
         // space-between
         return <div
             className="am-list-item"
@@ -94,7 +91,7 @@ export default class InputPhoneCode extends React.Component<InputPhoneCodeProps,
                        clear
                        style={{width: 170}}
                        onChange={onChange}
-                       defaultValue={value}
+                       value={value}
                        placeholder={placeholder || "短信验证码"}
                        maxLength={maxLength || 6}/>
             <Button type={"primary"}

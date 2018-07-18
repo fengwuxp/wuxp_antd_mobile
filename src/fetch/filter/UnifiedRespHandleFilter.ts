@@ -12,22 +12,21 @@ let count = 0;
 export class UnifiedRespHandleFilter extends ApiAbstractFilter<FetchOption, ApiResp<any>> {
 
 
-    postHandle(resp: ApiResp<any>, context?: any): boolean {
+    postHandle(resp: ApiResp<any>, options?: FetchOption): boolean {
         const {message, success, actions} = resp;
 
-        console.log("-------unified resp--->", success, count)
+        console.log("-------unified resp--->", success, count);
         if (success) {
             return true;
         }
-        if (count > 0) {
+        if (count > 0 || options.useProgressBar != true) {
             return false;
         }
         //请求失败
         count++;
-        Toast.fail(message ? message : "操作失败", 2);
-        setTimeout(function () {
+        Toast.fail(message ? message : "操作失败", 2, () => {
             count--;
-        }, 2000);
+        });
         return false;
     }
 }
