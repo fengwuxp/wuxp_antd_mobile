@@ -8,14 +8,17 @@ function Fragment(props) {
     return props.children;
 }
 
-function SupportTouch(props) {
+function SupportTouch(props: {
+    enableMouseEvents?: boolean;
+    children: React.ReactNode
+}) {
 
 
-    const {children} = props;
-
+    const {children, enableMouseEvents} = props;
     return (
         <Fragment>
-            <NoSSR>{!supportsTouch && (<span>You need a touch device to swipe between the slides.<br/><br/></span>)}</NoSSR>
+            {enableMouseEvents ? null : <NoSSR>{!supportsTouch && (
+                <span>You need a touch device to swipe between the slides.<br/><br/></span>)}</NoSSR>}
             {children}
         </Fragment>
     );
