@@ -14,12 +14,12 @@ export class UnifiedRespHandleFilter extends ApiAbstractFilter<FetchOption, ApiR
 
     postHandle(resp: ApiResp<any>, options?: FetchOption): boolean {
         const {message, success, actions} = resp;
-
-        console.log("-------unified resp--->", success, count);
         if (success) {
+            count--;
             return true;
         }
-        if (count > 0 || options.useProgressBar != true) {
+        if (count > 0 || options.useProgressBar === false) {
+            count--;
             return false;
         }
         //请求失败

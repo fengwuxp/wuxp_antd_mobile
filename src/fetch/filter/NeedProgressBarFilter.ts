@@ -15,6 +15,8 @@ let PROGRESSBAR_COUNT: number = 0;
  */
 export class NeedProgressBarFilter extends ApiAbstractFilter<FetchOption, ApiResp<any>> {
 
+    //加载文字提示
+    public static LOADING_TEXT:string="";
 
     preHandle(options: FetchOption): boolean | Promise<boolean> {
         if (options.useProgressBar) {
@@ -22,7 +24,7 @@ export class NeedProgressBarFilter extends ApiAbstractFilter<FetchOption, ApiRes
                 //防止重复出现
                 //Toast.hide();
                 //显示加载进度条
-                Toast.loading("", 20);
+                Toast.loading(NeedProgressBarFilter.LOADING_TEXT, 20);
             }
             //计数器加一
             PROGRESSBAR_COUNT++;
