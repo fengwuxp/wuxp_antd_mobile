@@ -46,7 +46,7 @@ getWebpackBaseConfig = function (options) {
             publicPath: "/"
         },
         resolve: {
-            extensions: [".ts", ".tsx", "d.ts", ".js", ".css", ".scss", ".less", ".png", "jpg", ".jpeg", ".gif"],
+            extensions: [".ts", ".tsx", "d.ts", ".js",".jsx",".css", ".scss", ".less", ".png", "jpg", ".jpeg", ".gif"]
         },
 
         module: {
