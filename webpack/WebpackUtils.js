@@ -36,4 +36,6 @@ const isExclude = function (path) {
     return isNodeModules;
 };
 
-module.export = isExclude;
+module.exports = {
+    isExclude
+};
