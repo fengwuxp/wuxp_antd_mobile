@@ -2,6 +2,8 @@ import * as path from "path";
 import * as UglifyJsPlugin from "uglifyjs-webpack-plugin";
 import {getWebpackBaseConfig} from "./webpack.base.config"
 
+
+
 const baseConfig = getWebpackBaseConfig({
     themePath: path.resolve("theme", "index.json")
 });
