@@ -10,3 +10,4 @@ webpack.prod.config.ts
 tsconfig.json
 script
 webpack-ts
+.babelrc

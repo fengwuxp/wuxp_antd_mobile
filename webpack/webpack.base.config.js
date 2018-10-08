@@ -33,7 +33,7 @@ getWebpackBaseConfig = function (options) {
 
 
     //默认打包目录
-    const packPath = path.resolve("src", '../dist');
+    const packPath = path.resolve('./dist');
 
     const config = {
         entry: {
@@ -95,11 +95,9 @@ getWebpackBaseConfig = function (options) {
                                 }
                             }
                         ]
-                    }),
-
+                    })
                 },
                 getLessLoader(options),
-
                 {
                     test: /\.s[c|a]ss$/,
                     use: ExtractTextWebpackPlugin.extract({
@@ -168,9 +166,9 @@ getWebpackBaseConfig = function (options) {
         externals: {
             "react": "React",
             "react-dom": "ReactDOM",
-            "react-router":"react-router",
-            "react-router-dom":"react-router-dom",
             "moment": "moment",
+            "react-router": "react-router",
+            "react-router-dom": "react-router-dom",
             "antd-mobile": "antd-mobile"
         },
         plugins: [

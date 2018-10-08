@@ -1,7 +1,7 @@
 const path = require("path");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const {getWebpackBaseConfig} = require("./webpack.base.config");
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const baseConfig = getWebpackBaseConfig({
     themePath: path.resolve("theme", "index.json")
@@ -116,7 +116,8 @@ let uglifyJsPlugin = new UglifyJsPlugin({
     },
 });
 config.plugins.push(
-    uglifyJsPlugin
+    uglifyJsPlugin,
+    new BundleAnalyzerPlugin()
 );
 
 module.exports = config;
