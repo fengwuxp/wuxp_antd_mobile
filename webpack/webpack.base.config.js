@@ -167,8 +167,9 @@ getWebpackBaseConfig = function (options) {
             "react": "React",
             "react-dom": "ReactDOM",
             "moment": "moment",
-            "react-router": "react-router",
-            "react-router-dom": "react-router-dom",
+            "react-router": "ReactRouter",
+            "react-router-dom": "ReactRouterDOM",
+            "redux": "Redux",
             "antd-mobile": "antd-mobile"
         },
         plugins: [
