@@ -168,7 +168,8 @@ getWebpackBaseConfig = function (options) {
         externals: {
             "react": "React",
             "react-dom": "ReactDOM",
-            "moment": "moment"
+            "moment": "moment",
+            "ant-mobile": "ant-mobile"
         },
         plugins: [
             new ExtractTextWebpackPlugin({
