@@ -46,7 +46,7 @@ getWebpackBaseConfig = function (options) {
             publicPath: "/"
         },
         resolve: {
-            extensions: [".ts", ".tsx", "d.ts", ".js",".jsx",".css", ".scss", ".less", ".png", "jpg", ".jpeg", ".gif"]
+            extensions: [".ts", ".tsx", "d.ts", ".js", ".jsx", ".css", ".scss", ".less", ".png", "jpg", ".jpeg", ".gif"]
         },
 
         module: {
@@ -124,7 +124,7 @@ getWebpackBaseConfig = function (options) {
                         {
                             loader: "url-loader",
                             options: {
-                                limit: 25000
+                                limit: 1024 * 5
                             }
                         }
                     ]
@@ -137,8 +137,8 @@ getWebpackBaseConfig = function (options) {
                             //项目设置打包到dist下的fonts文件夹下
                             options: {
                                 name: 'fonts/[name].[hash:8].[ext]',
-                                //20kb以下的直接打包到css文件中
-                                limit: 1024 * 20,
+                                //10kb以下的直接打包到css文件中
+                                limit: 1024 * 10,
                                 //返回最终的资源相对路径
                                 publicPath: function (url) {
                                     //使用全局变量来传递 资源根路径
@@ -168,8 +168,10 @@ getWebpackBaseConfig = function (options) {
         externals: {
             "react": "React",
             "react-dom": "ReactDOM",
+            "react-router":"react-router",
+            "react-router-dom":"react-router-dom",
             "moment": "moment",
-            "ant-mobile": "ant-mobile"
+            "antd-mobile": "antd-mobile"
         },
         plugins: [
             new ExtractTextWebpackPlugin({
