@@ -1,6 +1,5 @@
 import * as React from "react";
-import {PullToRefresh, Icon, Flex} from "antd-mobile";
-import {Indicator} from 'rmc-pull-to-refresh/lib/PropsType';
+import {PullToRefresh} from "antd-mobile";
 import {RefreshView} from "wuxp_react_dynamic_router/src/layout/view/RefreshView";
 import {AntdRefresh} from "./AntdRefresh";
 

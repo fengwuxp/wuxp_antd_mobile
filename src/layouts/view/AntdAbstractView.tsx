@@ -1,7 +1,6 @@
 import AbstractSimpleView, {
     ViewProps,
-    ViewState,
-    ViewRenderHelper
+    ViewState
 } from "wuxp_react_dynamic_router/src/layout/view/AbstractSimpleView";
 import {NavBar, Icon} from "antd-mobile";
 import {NavBarProps} from "antd-mobile/lib/nav-bar/PropsType";
@@ -17,8 +16,7 @@ export interface AntdAbstractViewState extends ViewState {
     navBarTitle?: string;
 }
 
-export class AntdViewRenderHelper implements ViewRenderHelper {
-
+export class AntdViewRenderHelper {
 
 
     renderHeader = (title: string, p: NavBarProps): React.ReactNode => {
@@ -40,6 +38,7 @@ export class AntdViewRenderHelper implements ViewRenderHelper {
 export default abstract class AntdAbstractView<P extends AntdAbstractViewProps, S extends AntdAbstractViewState>
     extends AbstractSimpleView<P, S> {
 
+    protected renderHelper;
 
     constructor(props: P, context: any) {
         super(props, context);

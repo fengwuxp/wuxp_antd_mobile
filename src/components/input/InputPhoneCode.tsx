@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Flex, InputItem, Button} from 'antd-mobile';
+import { InputItem, Button} from 'antd-mobile';
 import TimerUtil from "wuxp_react_dynamic_router/src/utils/common/TimerUtil";
 import {isFunction} from "util";
 import {InputItemProps} from "antd-mobile/lib/input-item";

@@ -170,7 +170,7 @@ getWebpackBaseConfig = function (options) {
             "react-router": "ReactRouter",
             "react-router-dom": "ReactRouterDOM",
             "redux": "Redux",
-            "antd-mobile": "antd-mobile"
+            "antd-mobile": "window['antd-mobile']"
         },
         plugins: [
             new ExtractTextWebpackPlugin({
