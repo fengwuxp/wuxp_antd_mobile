@@ -27,10 +27,10 @@ config.optimization = { // 提取js 第三方库等
     // }
     splitChunks: {
         chunks: "initial",
-        minSize: 30000,
-        minChunks: 1,
-        maxAsyncRequests: 5,
-        maxInitialRequests: 3,
+        // minSize: 30000,
+        // minChunks: 1,
+        // maxAsyncRequests: 5,
+        // maxInitialRequests: 3,
         // name: true,
         cacheGroups: {
             common: {
