@@ -22,7 +22,7 @@ export class AntdViewRenderHelper {
     renderHeader = (title: string, p: NavBarProps): React.ReactNode => {
 
         const props: NavBarProps = {
-            icon: window.history.length >= 2 ? <Icon type="left" size={"md"}/> : null,
+            icon: window.history.length >= 2 ? <Icon type="left" size={"lg"}/> : null,
             onLeftClick: () => window.history.back(),
             mode: p.mode || "dark",
             ...p
