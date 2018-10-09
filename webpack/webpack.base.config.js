@@ -141,6 +141,9 @@ getWebpackBaseConfig = function (options) {
                                 publicPath: function (url) {
                                     //使用全局变量来传递 资源根路径
                                     let uri = path.join(global['__RESOURCES_BASE_NAME__'], url).replace(/\\/g, '/');
+                                    if (uri.startsWith("http:/") && !uri.startsWith("http://")) {
+                                        uri = uri.replace("http:/", "http://")
+                                    }
                                     return uri;
                                 }
                             },
