@@ -16,15 +16,32 @@ config.mode = "production";
 
 
 config.optimization = { // 提取js 第三方库等
+    // splitChunks: {
+    //     cacheGroups: {
+    //         common: {
+    //             chunks: 'initial', // 初始化
+    //             name: 'common',    // entry中js
+    //             enforce: true      // 强制
+    //         }
+    //     }
+    // }
     splitChunks: {
+        chunks: "initial",
+        minSize: 30000,
+        minChunks: 1,
+        maxAsyncRequests: 5,
+        maxInitialRequests: 3,
+        // name: true,
         cacheGroups: {
             common: {
-                chunks: 'initial', // 初始化
-                name: 'common',    // entry中js
-                enforce: true      // 强制
+                test: /[\\/]node_modules[\\/]/,
+                name: "common",    // entry中js
+                enforce: true,      // 强制
+                priority: 2
             }
         }
-    }
+    },
+    concatenateModules: true
 };
 
 let uglifyJsPlugin = new UglifyJsPlugin({

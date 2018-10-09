@@ -197,10 +197,10 @@ getWebpackBaseConfig = function (options) {
             new CleanWebpackPlugin([
                 config.output.path
             ], {
-                root: PROJECT_DIR,       　　　　　　   //根目录
-                // verbose: true,        　　　　　　　  //开启在控制台输出信息
-                // dry: false        　　　　　　　　　　//启用删除文件,
-                allowExternal: true,                  //允许删除wbpack根目录之外的文件
+                root: PROJECT_DIR,       　　　　　　     //根目录
+                // verbose: true,        　　　　　　　    //开启在控制台输出信息
+                // dry: false        　　　　　　　　　　  //启用删除文件,
+                allowExternal: true,                   //允许删除wbpack根目录之外的文件
                 // beforeEmit: true                       //在将文件发送到输出目录之前执行清理
             }),
         );

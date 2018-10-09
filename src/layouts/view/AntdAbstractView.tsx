@@ -28,7 +28,7 @@ export class AntdViewRenderHelper {
             ...p
         };
 
-        return <NavBar {...props as any}>{title}</NavBar>;
+        return <NavBar {...props as any}><div>{title}</div></NavBar>;
     };
 
 
