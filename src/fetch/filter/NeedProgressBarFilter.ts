@@ -16,20 +16,26 @@ let PROGRESSBAR_COUNT: number = 0;
 export class NeedProgressBarFilter extends ApiAbstractFilter<FetchOption, ApiResp<any>> {
 
     //加载文字提示
-    public static LOADING_TEXT:string="";
+    public static LOADING_TEXT: string = "";
+
+    public static LAZY_TIMES: number = 200;
+
+    private timerId = null;
 
     preHandle(options: FetchOption): boolean | Promise<boolean> {
         if (options.useProgressBar) {
             if (PROGRESSBAR_COUNT === 0) {
                 //防止重复出现
                 //Toast.hide();
-                //显示加载进度条
-                Toast.loading(NeedProgressBarFilter.LOADING_TEXT, 20);
+                //显示加载进度条，增加300毫秒的延迟
+                this.timerId = setTimeout(() => {
+                    Toast.loading(NeedProgressBarFilter.LOADING_TEXT, 20);
+                }, NeedProgressBarFilter.LAZY_TIMES);
             }
             //计数器加一
             PROGRESSBAR_COUNT++;
         }
-        return true
+        return true;
     }
 
 
@@ -38,10 +44,11 @@ export class NeedProgressBarFilter extends ApiAbstractFilter<FetchOption, ApiRes
             //计数器减一
             PROGRESSBAR_COUNT--;
             if (PROGRESSBAR_COUNT === 0) {
+                clearTimeout(this.timerId);
                 //隐藏加载进度条
                 Toast.hide();
             }
         }
-        return true
+        return true;
     }
 }
