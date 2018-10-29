@@ -23,11 +23,6 @@ export class AntdViewRenderHelper {
     renderHeader = (title: string, p: NavBarProps): React.ReactNode => {
 
         const pathname = location.pathname;
-        //第一次进入应用程序是的页面
-        if (window['firstViewPathName'] == null) {
-            window['firstViewPathName'] = pathname;
-        }
-
         const isFirstView = pathname === window['firstViewPathName'];
 
         const props: NavBarProps = {
