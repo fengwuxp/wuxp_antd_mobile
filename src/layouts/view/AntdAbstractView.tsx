@@ -23,7 +23,7 @@ export class AntdViewRenderHelper {
     renderHeader = (title: string, p: NavBarProps): React.ReactNode => {
 
         const pathname = location.pathname;
-        const isFirstView = pathname === window['firstViewPathName'];
+        const isFirstView = pathname === window['firstViewPathname'];
 
         const props: NavBarProps = {
             icon: isFirstView ? null : <Icon type="left" size={"lg"}/>,
