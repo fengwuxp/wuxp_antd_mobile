@@ -2,12 +2,11 @@ const webpack = require("webpack");
 const path = require("path");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-
 const {isExclude} = require("./WebpackUtils");
 
 const {getLessLoader} = require("./getLessLoader");
 const {scssModuleLoader, cssModuleLoader} = require("./cssModuleUtils");
-
+const babelConfig = require('./getBabelCommonConfig')(false);
 
 function getWebpackConfig() {
     if (process.env._self !== "1") {
@@ -21,6 +20,19 @@ const {
     PROJECT_DIR
 } = getWebpackConfig();
 
+
+const pluginImportOptions = [
+    {
+        style: true,
+        libraryName: "antd-mobile"
+    },
+];
+
+
+babelConfig.plugins.push([
+    require.resolve('babel-plugin-import'),
+    pluginImportOptions,
+]);
 
 /**
  * 获取打包配置
@@ -58,11 +70,7 @@ getWebpackBaseConfig = function (options) {
                     use: [
                         {
                             loader: "babel-loader",
-                            options: {
-                                // presets: ['es2015', 'stage-2'],
-                                presets: ["react", "env"],
-                                compact: true
-                            }
+                            options: babelConfig
                         }
                     ]
                 },
@@ -72,10 +80,7 @@ getWebpackBaseConfig = function (options) {
                     use: [
                         {
                             loader: "babel-loader",
-                            options: {
-                                cacheDirectory: true,
-                                presets: ['es2015', 'stage-2']
-                            }
+                            options: babelConfig
                         },
                         {loader: "awesome-typescript-loader"}
                     ]
@@ -93,7 +98,7 @@ getWebpackBaseConfig = function (options) {
                                         path: path.join(__dirname, './postcss.config.js')
                                     }
                                 }
-                            }
+                            },
                         ]
                     })
                 },

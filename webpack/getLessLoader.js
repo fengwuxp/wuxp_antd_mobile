@@ -1,8 +1,7 @@
 const {existsSync} = require("fs");
-const path = require("path");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
 const {lessModuleLoader} = require("./cssModuleUtils");
-
+const path = require("path");
 
 /**
  * 获取主题配置
@@ -67,6 +66,6 @@ function getLessLoader(options) {
     }
 }
 
-module.exports ={
+module.exports = {
     getLessLoader
-} ;
+};
