@@ -8,10 +8,7 @@ module.exports = function (modules) {
         require.resolve('babel-plugin-syntax-dynamic-import'),
     ];
     plugins.push([require.resolve('babel-plugin-transform-runtime'), {
-        "helpers": false,
-        "polyfill": false,
-        "regenerator": true,
-        "moduleName": "babel-runtime"
+        helpers: false,
     }]);
     return {
         presets: [
