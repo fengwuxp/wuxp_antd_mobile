@@ -1,6 +1,5 @@
 import * as React from "react";
-import { InputItem, Button} from 'antd-mobile';
-import TimerUtil from "wuxp_react_dynamic_router/src/utils/common/TimerUtil";
+import {InputItem, Button} from 'antd-mobile';
 import {isFunction} from "util";
 import {InputItemProps} from "antd-mobile/lib/input-item";
 
@@ -47,6 +46,10 @@ interface InputPhoneCodeState {
     disabledButton?: boolean;
 
     buttonText?: string;
+
+    total: number;
+
+    maxTotal?: number;
 }
 
 /**
@@ -54,15 +57,20 @@ interface InputPhoneCodeState {
  */
 export default class InputPhoneCode extends React.Component<InputPhoneCodeProps, InputPhoneCodeState> {
 
+    private timerId;
+
+    private static DEFAULT_TIMES = 60;
 
     constructor(props: InputPhoneCodeProps, context: any) {
         super(props, context);
 
-        const {defaultButtonText, renderButtonText} = this.props;
+        const {defaultButtonText, times, renderButtonText} = this.props;
 
-
+        const total = times || InputPhoneCode.DEFAULT_TIMES;
         this.state = {
             disabledButton: false,
+            total,
+            maxTotal: total,
             buttonText: defaultButtonText || "获取短信验证码",
         };
 
@@ -73,7 +81,7 @@ export default class InputPhoneCode extends React.Component<InputPhoneCodeProps,
 
     render() {
 
-        const {defaultButtonText, placeholder,value, onChange, maxLength} = this.props;
+        const {defaultButtonText, placeholder, value, onChange, maxLength} = this.props;
         const {disabledButton, buttonText} = this.state;
         // space-between
         return <div
@@ -83,7 +91,7 @@ export default class InputPhoneCode extends React.Component<InputPhoneCodeProps,
                     backgroundColor: "#ffffff",
                     paddingRight: 15,
                     justifyContent: "space-between",
-                    paddingLeft:0
+                    paddingLeft: 0
                 }
 
             }>
@@ -102,6 +110,10 @@ export default class InputPhoneCode extends React.Component<InputPhoneCodeProps,
         </div>;
     }
 
+    componentWillUnmount(): void {
+        clearTimeout(this.timerId);
+    }
+
     protected clickButton = () => {
 
         this.props.onClickButton().then(() => {
@@ -112,31 +124,29 @@ export default class InputPhoneCode extends React.Component<InputPhoneCodeProps,
 
 
     private countDown = () => {
-        let {times, restButtonText} = this.props;
+        const {restButtonText, times} = this.props;
+        let {total, maxTotal} = this.state;
 
-        let total = times || 60;
-
-        TimerUtil.countDown({
-            times: 1000,
-            total: total,
-            callback: (num) => {
-                // console.log("--------total--------", num);
-                let buttonText = this.renderButtonText(num);
-                let state: InputPhoneCodeState = {
-                    buttonText
-                };
-                if (num === total) {
-                    state.disabledButton = true
-                }
-                this.setState(state);
-            },
-            endAction: () => {
+        this.timerId = setTimeout(() => {
+            total--;
+            if (total === 0) {
                 this.setState({
                     buttonText: restButtonText || "重新获取",
-                    disabledButton: false
+                    disabledButton: false,
+                    total: maxTotal
                 });
+            } else if (total < maxTotal) {
+                const buttonText = this.renderButtonText(total);
+                const state: InputPhoneCodeState = {
+                    buttonText,
+                    total,
+                    disabledButton: true
+                };
+                this.setState(state);
+                this.countDown();
             }
-        })
+
+        }, 1000);
     };
 
     private renderButtonText = (total: number) => {

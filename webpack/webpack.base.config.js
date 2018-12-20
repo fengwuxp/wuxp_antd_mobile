@@ -6,7 +6,8 @@ const {isExclude} = require("./WebpackUtils");
 
 const {getLessLoader} = require("./getLessLoader");
 const {scssModuleLoader, cssModuleLoader} = require("./cssModuleUtils");
-const babelConfig = require('./getBabelCommonConfig')(false);
+const babel6Config = require('./getBabelCommonConfig')(false);
+// const  babel6Config =require("./babelrc6");
 
 function getWebpackConfig() {
     if (process.env._self !== "1") {
@@ -29,7 +30,7 @@ const pluginImportOptions = [
 ];
 
 
-babelConfig.plugins.push([
+babel6Config.plugins.push([
     require.resolve('babel-plugin-import'),
     pluginImportOptions,
 ]);
@@ -70,7 +71,7 @@ getWebpackBaseConfig = function (options) {
                     use: [
                         {
                             loader: "babel-loader",
-                            options: babelConfig
+                            options: babel6Config
                         }
                     ]
                 },
@@ -80,7 +81,7 @@ getWebpackBaseConfig = function (options) {
                     use: [
                         {
                             loader: "babel-loader",
-                            options: babelConfig
+                            options: babel6Config
                         },
                         {loader: "awesome-typescript-loader"}
                     ]
@@ -182,7 +183,8 @@ getWebpackBaseConfig = function (options) {
         },
         plugins: [
             new ExtractTextWebpackPlugin({
-                filename: "style.css",
+                // filename: "style.css",
+                filename: "[name][hash].css",
                 allChunks: true
             }),
             // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn/),

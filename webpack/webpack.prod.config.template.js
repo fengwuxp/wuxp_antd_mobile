@@ -133,8 +133,8 @@ let uglifyJsPlugin = new UglifyJsPlugin({
     },
 });
 config.plugins.push(
-    uglifyJsPlugin,
-    new BundleAnalyzerPlugin()
+    uglifyJsPlugin
+    // new BundleAnalyzerPlugin()
 );
 
 module.exports = config;
