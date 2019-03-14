@@ -3,10 +3,11 @@ const path = require("path");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const {isExclude} = require("./WebpackUtils");
-
+const PostCssConfig = require("./PostCssConfig");
 const {getLessLoader} = require("./getLessLoader");
 const {scssModuleLoader, cssModuleLoader} = require("./cssModuleUtils");
 const babel6Config = require('./getBabelCommonConfig')(false);
+
 // const  babel6Config =require("./babelrc6");
 
 function getWebpackConfig() {
@@ -34,6 +35,8 @@ babel6Config.plugins.push([
     require.resolve('babel-plugin-import'),
     pluginImportOptions,
 ]);
+
+
 
 /**
  * 获取打包配置
@@ -94,11 +97,12 @@ getWebpackBaseConfig = function (options) {
                             cssModuleLoader,
                             {
                                 loader: "postcss-loader",
-                                options: {
-                                    config: {
-                                        path: path.join(__dirname, './postcss.config.js')
-                                    }
-                                }
+                                options: PostCssConfig
+                                // options: {
+                                //     config: {
+                                //         path: path.join(__dirname, './postcss.config.js')
+                                //     },
+                                // }
                             },
                         ]
                     })
@@ -112,11 +116,12 @@ getWebpackBaseConfig = function (options) {
                             scssModuleLoader,
                             {
                                 loader: "postcss-loader",
-                                options: {
-                                    config: {
-                                        path: path.join(__dirname, './postcss.config.js')
-                                    }
-                                }
+                                // options: {
+                                //     config: {
+                                //         path: path.join(__dirname, './postcss.config.js')
+                                //     }
+                                // }
+                                options: PostCssConfig
                             },
                             {loader: "sass-loader"}
                         ]

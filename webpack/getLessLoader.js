@@ -2,7 +2,8 @@ const {existsSync} = require("fs");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
 const {lessModuleLoader} = require("./cssModuleUtils");
 const path = require("path");
-
+const PostCssConfig = require("./PostCssConfig");
+console.log(JSON.stringify(PostCssConfig))
 /**
  * 获取主题配置
  * @param path    文件路径
@@ -14,14 +15,14 @@ function getTheme(path, isPackage) {
     if (isPackage) {
         //配置在package.json文件中
         const pkg = existsSync(path) ? require(path) : {};
-        if (pkg.theme && typeof(pkg.theme) === 'string') {
+        if (pkg.theme && typeof (pkg.theme) === 'string') {
             let cfgPath = pkg.theme;
             // relative path
             if (cfgPath.charAt(0) === '.') {
                 cfgPath = path.resolve(global['args'].cwd, cfgPath);
             }
             theme = require(cfgPath);
-        } else if (pkg.theme && typeof(pkg.theme) === 'object') {
+        } else if (pkg.theme && typeof (pkg.theme) === 'object') {
             theme = pkg.theme;
         }
     } else {
@@ -47,10 +48,10 @@ function getLessLoader(options) {
                 {
                     loader: "postcss-loader",
                     options: {
-                        config: {
-                            path: path.join(__dirname, './postcss.config.js')
-                        },
-                        ident: "css-loader"
+                        // config: {
+                        //     path: path.join(__dirname, './postcss.config.js')
+                        // },
+                        ...PostCssConfig
                     }
                 },
                 {

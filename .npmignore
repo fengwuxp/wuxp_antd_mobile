@@ -11,3 +11,9 @@ tsconfig.json
 script
 webpack-ts
 .babelrc
+b6-webpack
+b6-webpack-ts
+b7-webpack
+package_b7.json
+package_b6.json
+__.babelrc
